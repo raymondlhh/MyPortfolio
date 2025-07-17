@@ -426,7 +426,11 @@
             
             <!-- Schoolworks Tabs -->
             <div class="schoolworks-tabs">
-                <button class="schoolworks-tab-button active" data-category="game-dev">
+                <button class="schoolworks-tab-button active" data-category="vr-ar">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <span>VR/AR</span>
+                </button>
+                <button class="schoolworks-tab-button" data-category="game-dev">
                     <i class="fas fa-gamepad"></i>
                     <span>Game Development</span>
                 </button>
@@ -438,18 +442,87 @@
                     <i class="fas fa-film"></i>
                     <span>2D/3D Animation</span>
                 </button>
-                <button class="schoolworks-tab-button" data-category="vr-ar">
-                    <i class="fas fa-vr-cardboard"></i>
-                    <span>VR/AR</span>
-                </button>
                 <button class="schoolworks-tab-button" data-category="audio-video">
                     <i class="fas fa-video"></i>
                     <span>Audio & Video Production</span>
                 </button>
             </div>
 
+            <!-- VR/AR -->
+            <div class="schoolworks-category active" id="vr-ar-projects">
+                <div class="category-header">
+                    <h3 class="category-title">
+                        <i class="fas fa-vr-cardboard"></i>
+                        VR/AR
+                    </h3>
+                    <p class="category-description">Virtual and Augmented Reality projects developed during academic studies, showcasing immersive experiences and interactive applications.</p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fas fa-vr-cardboard"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>VR Educational Environment</h3>
+                            <p>An immersive VR learning environment for STEM education, featuring interactive 3D models, virtual laboratories, and collaborative learning spaces for students.</p>
+                            <div class="project-tech">
+                                <span>Unity VR</span>
+                                <span>C#</span>
+                                <span>Oculus SDK</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>AR Campus Navigation</h3>
+                            <p>An augmented reality mobile application that helps students navigate university campuses with real-time directions, building information, and interactive campus maps.</p>
+                            <div class="project-tech">
+                                <span>Unity AR Foundation</span>
+                                <span>ARKit/ARCore</span>
+                                <span>C#</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fas fa-glasses"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>VR Training Simulator</h3>
+                            <p>A virtual reality training simulator for practical skills development, featuring realistic scenarios, performance tracking, and assessment tools for educational purposes.</p>
+                            <div class="project-tech">
+                                <span>Unity VR</span>
+                                <span>SteamVR</span>
+                                <span>3D Modeling</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Game Development -->
-            <div class="schoolworks-category active" id="game-dev-projects">
+            <div class="schoolworks-category" id="game-dev-projects">
                 <div class="category-header">
                     <h3 class="category-title">
                         <i class="fas fa-gamepad"></i>
@@ -661,79 +734,6 @@
                             <div class="project-links">
                                 <a href="#" class="project-link"><i class="fab fa-youtube"></i> Video</a>
                                 <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Portfolio</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- VR/AR -->
-            <div class="schoolworks-category" id="vr-ar-projects">
-                <div class="category-header">
-                    <h3 class="category-title">
-                        <i class="fas fa-vr-cardboard"></i>
-                        VR/AR
-                    </h3>
-                    <p class="category-description">Virtual and Augmented Reality projects developed during academic studies, showcasing immersive experiences and interactive applications.</p>
-                </div>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <div class="project-placeholder">
-                                <i class="fas fa-vr-cardboard"></i>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>VR Educational Environment</h3>
-                            <p>An immersive VR learning environment for STEM education, featuring interactive 3D models, virtual laboratories, and collaborative learning spaces for students.</p>
-                            <div class="project-tech">
-                                <span>Unity VR</span>
-                                <span>C#</span>
-                                <span>Oculus SDK</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-image">
-                            <div class="project-placeholder">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>AR Campus Navigation</h3>
-                            <p>An augmented reality mobile application that helps students navigate university campuses with real-time directions, building information, and interactive campus maps.</p>
-                            <div class="project-tech">
-                                <span>Unity AR Foundation</span>
-                                <span>ARKit/ARCore</span>
-                                <span>C#</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-image">
-                            <div class="project-placeholder">
-                                <i class="fas fa-glasses"></i>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>VR Training Simulator</h3>
-                            <p>A virtual reality training simulator for practical skills development, featuring realistic scenarios, performance tracking, and assessment tools for educational purposes.</p>
-                            <div class="project-tech">
-                                <span>Unity VR</span>
-                                <span>SteamVR</span>
-                                <span>3D Modeling</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
                             </div>
                         </div>
                     </div>
