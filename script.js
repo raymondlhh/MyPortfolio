@@ -144,6 +144,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Project Tab Functionality
+const tabButtons = document.querySelectorAll('.tab-button');
+const projectCategories = document.querySelectorAll('.project-category');
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        
+        // Remove active class from all buttons and categories
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        projectCategories.forEach(cat => cat.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding category
+        button.classList.add('active');
+        document.getElementById(`${category}-projects`).classList.add('active');
+        
+        // Smooth scroll to projects section if not already there
+        const projectsSection = document.getElementById('projects');
+        const rect = projectsSection.getBoundingClientRect();
+        if (rect.top > 100) {
+            projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
 // Project card hover effects
 document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
