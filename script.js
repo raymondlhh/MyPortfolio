@@ -170,28 +170,80 @@ tabButtons.forEach(button => {
 });
 
 // Courseworks Tab Functionality
-const courseworksTabButtons = document.querySelectorAll('.courseworks-tab-button');
-const courseworksCategories = document.querySelectorAll('.courseworks-category');
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - Initializing Courseworks Tabs');
+    
+    const courseworksTabButtons = document.querySelectorAll('.courseworks-tab-button');
+    const courseworksCategories = document.querySelectorAll('.courseworks-category');
 
-courseworksTabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
+    console.log('Found courseworks tab buttons:', courseworksTabButtons.length);
+    console.log('Found courseworks categories:', courseworksCategories.length);
+
+    if (courseworksTabButtons.length > 0 && courseworksCategories.length > 0) {
+        courseworksTabButtons.forEach((button, index) => {
+            console.log(`Setting up button ${index + 1}:`, button.getAttribute('data-category'));
+            
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('Button clicked:', button.getAttribute('data-category'));
+                
+                const category = button.getAttribute('data-category');
+                
+                // Remove active class from all buttons and categories
+                courseworksTabButtons.forEach(btn => btn.classList.remove('active'));
+                courseworksCategories.forEach(cat => cat.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding category
+                button.classList.add('active');
+                const targetCategory = document.getElementById(`${category}-projects`);
+                if (targetCategory) {
+                    targetCategory.classList.add('active');
+                    console.log('Successfully activated category:', category);
+                } else {
+                    console.error(`Category element with id "${category}-projects" not found`);
+                }
+                
+                // Smooth scroll to courseworks section if not already there
+                const courseworksSection = document.getElementById('courseworks');
+                if (courseworksSection) {
+                    const rect = courseworksSection.getBoundingClientRect();
+                    if (rect.top > 100) {
+                        courseworksSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+    } else {
+        console.warn('Courseworks tab buttons or categories not found');
         
-        // Remove active class from all buttons and categories
-        courseworksTabButtons.forEach(btn => btn.classList.remove('active'));
-        courseworksCategories.forEach(cat => cat.classList.remove('active'));
-        
-        // Add active class to clicked button and corresponding category
-        button.classList.add('active');
-        document.getElementById(`${category}-projects`).classList.add('active');
-        
-        // Smooth scroll to courseworks section if not already there
-        const courseworksSection = document.getElementById('courseworks');
-        const rect = courseworksSection.getBoundingClientRect();
-        if (rect.top > 100) {
-            courseworksSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
+        // Fallback: Try again after a short delay
+        setTimeout(() => {
+            console.log('Retrying courseworks tab initialization...');
+            const retryButtons = document.querySelectorAll('.courseworks-tab-button');
+            const retryCategories = document.querySelectorAll('.courseworks-category');
+            
+            if (retryButtons.length > 0 && retryCategories.length > 0) {
+                console.log('Fallback successful - found elements on retry');
+                retryButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const category = button.getAttribute('data-category');
+                        
+                        retryButtons.forEach(btn => btn.classList.remove('active'));
+                        retryCategories.forEach(cat => cat.classList.remove('active'));
+                        
+                        button.classList.add('active');
+                        const targetCategory = document.getElementById(`${category}-projects`);
+                        if (targetCategory) {
+                            targetCategory.classList.add('active');
+                        }
+                    });
+                });
+            }
+        }, 100);
+    }
 });
 
 // Project card hover effects
