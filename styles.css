@@ -607,14 +607,14 @@ body {
     opacity: 0.8;
 }
 
-/* Schoolworks Section */
-.schoolworks {
+/* Courseworks Section */
+.courseworks {
     padding: 100px 0;
     background: var(--bg-primary);
 }
 
-/* Schoolworks Tabs */
-.schoolworks-tabs {
+/* Courseworks Tabs */
+.courseworks-tabs {
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -622,7 +622,7 @@ body {
     flex-wrap: wrap;
 }
 
-.schoolworks-tab-button {
+.courseworks-tab-button {
     background: var(--card-bg);
     border: 2px solid var(--border-color);
     color: var(--text-secondary);
@@ -639,33 +639,33 @@ body {
     justify-content: center;
 }
 
-.schoolworks-tab-button:hover {
+.courseworks-tab-button:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px var(--shadow-color);
 }
 
-.schoolworks-tab-button.active {
+.courseworks-tab-button.active {
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     border-color: transparent;
     color: white;
     box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
 }
 
-.schoolworks-tab-button i {
+.courseworks-tab-button i {
     font-size: 1.2rem;
 }
 
-/* Schoolworks Categories */
-.schoolworks-category {
+/* Courseworks Categories */
+.courseworks-category {
     display: none;
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.5s ease;
 }
 
-.schoolworks-category.active {
+.courseworks-category.active {
     display: block;
     opacity: 1;
     transform: translateY(0);
@@ -864,11 +864,11 @@ body {
         font-size: 0.9rem;
     }
 
-    .schoolworks-tabs {
+    .courseworks-tabs {
         gap: 0.5rem;
     }
     
-    .schoolworks-tab-button {
+    .courseworks-tab-button {
         padding: 0.75rem 1.5rem;
         min-width: 140px;
         font-size: 0.9rem;
@@ -937,12 +937,12 @@ body {
         justify-content: center;
     }
 
-    .schoolworks-tabs {
+    .courseworks-tabs {
         flex-direction: column;
         align-items: center;
     }
     
-    .schoolworks-tab-button {
+    .courseworks-tab-button {
         width: 100%;
         max-width: 250px;
         justify-content: center;
