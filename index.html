@@ -100,20 +100,7 @@
                             <p class="degree-description">Digital Media Technology blends creativity with technology to design and develop digital content, applications, and interactive experiences across platforms like games, mobile apps, websites, and multimedia systems.</p>
                         </div>
                     </div>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <h3>3+</h3>
-                            <p>Years Experience</p>
-                        </div>
-                        <div class="stat">
-                            <h3>20+</h3>
-                            <p>Projects Completed</p>
-                        </div>
-                        <div class="stat">
-                            <h3>15+</h3>
-                            <p>Happy Clients</p>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -472,6 +459,25 @@
                     <p class="category-description">Virtual and Augmented Reality projects developed during academic studies, showcasing immersive experiences and interactive applications.</p>
                 </div>
                 <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="assets/images/VR Minimarket.gif" alt="VR Minimarket" class="project-cover">
+                        </div>
+                        <div class="project-content">
+                            <h3>VR Minimarket</h3>
+                            <p>An immersive virtual reality minimarket experience where users can explore, interact with products, and practice shopping in a realistic 3D environment.</p>
+                            <div class="project-tech">
+                                <span>Unity VR</span>
+                                <span>C#</span>
+                                <span>3D Modeling</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="project-card">
                         <div class="project-image">
                             <div class="project-placeholder">
@@ -883,6 +889,26 @@
         </div>
     </footer>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Firebase Configuration -->
+    <script src="firebase-config.js"></script>
+    
+    <!-- Database Service -->
+    <script src="database.js"></script>
+    
+    <!-- Sample Data (for testing) -->
+    <script src="sample-data.js"></script>
+    
+    <!-- VR Minimarket Database Integration -->
+    <script src="add-vr-minimarket.js"></script>
+    
+    <!-- Debug Script -->
+    <script src="debug-firebase.js"></script>
+    
+    <!-- Main Script -->
     <script src="script.js"></script>
 </body>
 </html> 

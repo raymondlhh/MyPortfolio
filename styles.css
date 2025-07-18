@@ -315,20 +315,27 @@ body {
 
 /* About Section */
 .about {
-    padding: 100px 0;
+    padding: 40px 0 60px;
     background: var(--bg-secondary);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 80px;
 }
 
 .about-content {
     max-width: 800px;
     margin: 0 auto;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .about-text p {
     font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     color: var(--text-secondary);
-    line-height: 1.8;
+    line-height: 1.7;
+    text-align: justify;
 }
 
 .about-stats {
@@ -365,12 +372,18 @@ body {
 
 /* Education Section */
 .education-info {
-    margin: 2rem 0;
+    margin: 1.5rem 0 1rem;
     padding: 2rem;
     background: var(--card-bg);
     border-radius: 12px;
-    box-shadow: 0 4px 6px var(--shadow-color);
+    box-shadow: 0 6px 20px var(--shadow-color);
     border-left: 4px solid var(--primary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px var(--shadow-color);
 }
 
 .education-info h3 {
@@ -396,7 +409,8 @@ body {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
 }
 
 .education-item .university {
@@ -426,6 +440,7 @@ body {
     line-height: 1.6;
     margin-top: 1rem;
     font-style: italic;
+    text-align: justify;
 }
 
 .education-details {
@@ -437,6 +452,7 @@ body {
     margin-bottom: 0.75rem;
     flex-wrap: wrap;
     min-height: 1.5rem;
+    padding: 0.25rem 0;
 }
 
 .education-details .university,
