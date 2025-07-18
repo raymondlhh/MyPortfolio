@@ -363,6 +363,106 @@ body {
     font-weight: 500;
 }
 
+/* Education Section */
+.education-info {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    border-left: 4px solid var(--primary-color);
+}
+
+.education-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.education-info h3 i {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.education-item {
+    margin-top: 1rem;
+}
+
+.education-item h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.education-item .university {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.education-item .duration {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    font-style: italic;
+}
+
+.education-item .cgpa {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.education-item .degree-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    line-height: 1.6;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+.education-details {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    gap: 2rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    min-height: 1.5rem;
+}
+
+.education-details .university,
+.education-details .duration,
+.education-details .cgpa {
+    font-size: 0.95rem;
+    font-weight: 500;
+    white-space: nowrap;
+    vertical-align: baseline;
+    line-height: 1.2;
+}
+
+.education-details .university {
+    color: var(--text-secondary);
+}
+
+.education-details .duration {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.education-details .cgpa {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
 /* Skills Section */
 .skills {
     padding: 100px 0;
