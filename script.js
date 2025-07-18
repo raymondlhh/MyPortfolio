@@ -169,18 +169,18 @@ tabButtons.forEach(button => {
     });
 });
 
-// Courseworks Tab Functionality
+// Coursework Tab Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM Content Loaded - Initializing Courseworks Tabs');
+    console.log('DOM Content Loaded - Initializing Coursework Tabs');
     
-    const courseworksTabButtons = document.querySelectorAll('.courseworks-tab-button');
-    const courseworksCategories = document.querySelectorAll('.courseworks-category');
+    const courseworkTabButtons = document.querySelectorAll('.coursework-tab-button');
+    const courseworkCategories = document.querySelectorAll('.coursework-category');
 
-    console.log('Found courseworks tab buttons:', courseworksTabButtons.length);
-    console.log('Found courseworks categories:', courseworksCategories.length);
+    console.log('Found coursework tab buttons:', courseworkTabButtons.length);
+    console.log('Found coursework categories:', courseworkCategories.length);
 
-    if (courseworksTabButtons.length > 0 && courseworksCategories.length > 0) {
-        courseworksTabButtons.forEach((button, index) => {
+    if (courseworkTabButtons.length > 0 && courseworkCategories.length > 0) {
+        courseworkTabButtons.forEach((button, index) => {
             console.log(`Setting up button ${index + 1}:`, button.getAttribute('data-category'));
             
             button.addEventListener('click', (e) => {
@@ -192,8 +192,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const category = button.getAttribute('data-category');
                 
                 // Remove active class from all buttons and categories
-                courseworksTabButtons.forEach(btn => btn.classList.remove('active'));
-                courseworksCategories.forEach(cat => cat.classList.remove('active'));
+                courseworkTabButtons.forEach(btn => btn.classList.remove('active'));
+                courseworkCategories.forEach(cat => cat.classList.remove('active'));
                 
                 // Add active class to clicked button and corresponding category
                 button.classList.add('active');
@@ -205,24 +205,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.error(`Category element with id "${category}-projects" not found`);
                 }
                 
-                // Smooth scroll to courseworks section if not already there
-                const courseworksSection = document.getElementById('courseworks');
-                if (courseworksSection) {
-                    const rect = courseworksSection.getBoundingClientRect();
+                // Smooth scroll to coursework section if not already there
+                const courseworkSection = document.getElementById('coursework');
+                if (courseworkSection) {
+                    const rect = courseworkSection.getBoundingClientRect();
                     if (rect.top > 100) {
-                        courseworksSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        courseworkSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                 }
             });
         });
     } else {
-        console.warn('Courseworks tab buttons or categories not found');
+        console.warn('Coursework tab buttons or categories not found');
         
         // Fallback: Try again after a short delay
         setTimeout(() => {
-            console.log('Retrying courseworks tab initialization...');
-            const retryButtons = document.querySelectorAll('.courseworks-tab-button');
-            const retryCategories = document.querySelectorAll('.courseworks-category');
+            console.log('Retrying coursework tab initialization...');
+            const retryButtons = document.querySelectorAll('.coursework-tab-button');
+            const retryCategories = document.querySelectorAll('.coursework-category');
             
             if (retryButtons.length > 0 && retryCategories.length > 0) {
                 console.log('Fallback successful - found elements on retry');
@@ -346,47 +346,8 @@ if (statsSection) {
     statsObserver.observe(statsSection);
 }
 
-// Theme Toggle Functionality
-const themeToggle = document.getElementById('theme-toggle');
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-// Check for saved theme preference or default to user's system preference
-const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
-
-// Apply the current theme
-document.documentElement.setAttribute('data-theme', currentTheme);
-updateThemeIcon(currentTheme);
-
-// Theme toggle event listener
-themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-});
-
-// Update theme icon based on current theme
-function updateThemeIcon(theme) {
-    const icon = themeToggle.querySelector('i');
-    if (theme === 'dark') {
-        icon.className = 'fas fa-moon';
-        themeToggle.setAttribute('aria-label', 'Switch to light mode');
-    } else {
-        icon.className = 'fas fa-sun';
-        themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-    }
-}
-
-// Listen for system theme changes
-prefersDarkScheme.addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-        const newTheme = e.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        updateThemeIcon(newTheme);
-    }
-});
+// Force Dark Mode
+document.documentElement.setAttribute('data-theme', 'dark');
 
 // Add CSS for active nav link and theme transitions
 const style = document.createElement('style');

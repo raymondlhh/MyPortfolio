@@ -142,32 +142,7 @@ body {
     transition: 0.3s;
 }
 
-/* Theme Toggle Button */
-.theme-toggle {
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-}
 
-.theme-toggle:hover {
-    background-color: var(--bg-secondary);
-    transform: scale(1.1);
-}
-
-.theme-toggle:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--primary-color);
-}
 
 /* Hero Section */
 .hero {
@@ -483,36 +458,67 @@ body {
 .skills {
     padding: 100px 0;
     background: var(--bg-primary);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills .container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .skill-category h3 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     color: var(--text-primary);
     text-align: center;
+    position: relative;
+}
+
+.skill-category h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    border-radius: 2px;
 }
 
 .skill-items {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .skill-item {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1rem;
+    gap: 1rem;
+    padding: 1.5rem;
     background: var(--bg-secondary);
-    border-radius: 8px;
+    border-radius: 12px;
     transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 .skill-item:hover {
@@ -628,20 +634,57 @@ body {
     border-radius: 2px;
 }
 
-.category-description {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
+}
+
+/* No Projects Message */
+.no-projects-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 2px dashed var(--border-color);
+    color: var(--text-secondary);
+    grid-column: 1 / -1;
+}
+
+.no-projects-message i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.no-projects-message p {
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Error Message */
+.error-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 2px solid #ef4444;
+    color: #ef4444;
+    grid-column: 1 / -1;
+}
+
+.error-message i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.error-message p {
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.6;
 }
 
 .project-card {
@@ -723,14 +766,14 @@ body {
     opacity: 0.8;
 }
 
-/* Courseworks Section */
-.courseworks {
+/* Others Section */
+.others {
     padding: 100px 0;
     background: var(--bg-primary);
 }
 
-/* Courseworks Tabs */
-.courseworks-tabs {
+/* Others Tabs */
+.others-tabs {
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -738,7 +781,7 @@ body {
     flex-wrap: wrap;
 }
 
-.courseworks-tab-button {
+.others-tab-button {
     background: var(--card-bg);
     border: 2px solid var(--border-color);
     color: var(--text-secondary);
@@ -755,33 +798,33 @@ body {
     justify-content: center;
 }
 
-.courseworks-tab-button:hover {
+.others-tab-button:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px var(--shadow-color);
 }
 
-.courseworks-tab-button.active {
+.others-tab-button.active {
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     border-color: transparent;
     color: white;
     box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
 }
 
-.courseworks-tab-button i {
+.others-tab-button i {
     font-size: 1.2rem;
 }
 
-/* Courseworks Categories */
-.courseworks-category {
+/* Others Categories */
+.others-category {
     display: none;
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.5s ease;
 }
 
-.courseworks-category.active {
+.others-category.active {
     display: block;
     opacity: 1;
     transform: translateY(0);
@@ -958,12 +1001,24 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .skills-grid {
+        .skills-grid {
         grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 0 1rem;
     }
-
+    
     .skill-items {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .skill-item {
+        padding: 1.25rem;
+    }
+    
+    .skill-category h3 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
     }
 
     .projects-grid {
@@ -980,11 +1035,11 @@ body {
         font-size: 0.9rem;
     }
 
-    .courseworks-tabs {
+    .others-tabs {
         gap: 0.5rem;
     }
     
-    .courseworks-tab-button {
+    .others-tab-button {
         padding: 0.75rem 1.5rem;
         min-width: 140px;
         font-size: 0.9rem;
@@ -994,9 +1049,7 @@ body {
         font-size: 1.75rem;
     }
     
-    .category-description {
-        font-size: 1rem;
-    }
+
 
     .contact-content {
         grid-template-columns: 1fr;
@@ -1053,12 +1106,12 @@ body {
         justify-content: center;
     }
 
-    .courseworks-tabs {
+    .others-tabs {
         flex-direction: column;
         align-items: center;
     }
     
-    .courseworks-tab-button {
+    .others-tab-button {
         width: 100%;
         max-width: 250px;
         justify-content: center;
