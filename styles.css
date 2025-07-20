@@ -1090,6 +1090,13 @@ html, body {
         width: 200px;
         text-align: center;
     }
+    .about,
+    .skills,
+    .projects,
+    .others,
+    .contact {
+        padding-top: 72px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1218,7 +1225,7 @@ html {
         max-width: 100%;
     }
     .hamburger {
-        margin-right: 30px;
+        margin-right: 20px;
     }
     .skills-grid {
         justify-content: center !important;
@@ -1237,5 +1244,12 @@ html {
         display: flex !important;
         flex-wrap: wrap !important;
         gap: 1rem !important;
+    }
+    .about,
+    .skills,
+    .projects,
+    .others,
+    .contact {
+        padding-top: 72px;
     }
 } 
