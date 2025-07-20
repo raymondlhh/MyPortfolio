@@ -307,25 +307,11 @@ function setupOthersTabSwitching() {
                 if (container && container.children.length > 0) {
                     // Projects are already loaded, just show the category
                     console.log(`Projects already loaded for ${category}, just showing category`);
-                    
-                    // Fix YouTube videos when switching to already loaded category
-                    if (window.YouTubeTabFix && window.YouTubeTabFix.reloadYouTubeIframes) {
-                        setTimeout(() => {
-                            window.YouTubeTabFix.reloadYouTubeIframes(targetCategory);
-                        }, 300);
-                    }
                 } else {
                     // Load projects for this category (only if not already loaded)
                     const collectionName = getCollectionNameForCategory(category);
                     console.log(`Loading projects for ${category} (${collectionName})`);
                     await window.dynamicProjectLoader.displayProjects(containerSelector, collectionName);
-                    
-                    // Fix YouTube videos after loading new projects
-                    if (window.YouTubeTabFix && window.YouTubeTabFix.fixYouTubeVideosInProjects) {
-                        setTimeout(() => {
-                            window.YouTubeTabFix.fixYouTubeVideosInProjects();
-                        }, 500);
-                    }
                 }
             }
         });
