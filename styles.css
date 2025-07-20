@@ -1210,3 +1210,29 @@ html {
     font-size: 3rem;
     color: #fff;
 } 
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 8px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .skills-grid {
+        justify-content: center !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    .skill-category {
+        align-items: center !important;
+        text-align: center !important;
+    }
+    .skill-items {
+        justify-content: center !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 1rem !important;
+    }
+} 
