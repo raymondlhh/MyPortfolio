@@ -1220,7 +1220,7 @@ html {
 
 @media (max-width: 768px) {
     .nav-container {
-        padding: 0 8px;
+        padding: 0 20px;
         width: 100%;
         max-width: 100%;
     }
