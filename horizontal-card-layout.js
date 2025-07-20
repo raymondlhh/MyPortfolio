@@ -49,6 +49,8 @@ function createAutoplayVideoCover(videoUrl, title) {
         videoId = videoUrl.split('v=')[1].split('&')[0];
     } else if (videoUrl.includes('youtu.be/')) {
         videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
+    } else if (videoUrl.includes('youtube.com/shorts/')) {
+        videoId = videoUrl.split('shorts/')[1].split('?')[0];
     }
     
     if (!videoId) return `<img src="${videoUrl}" alt="${title}" class="project-cover">`;

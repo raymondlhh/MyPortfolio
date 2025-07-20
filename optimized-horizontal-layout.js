@@ -12,6 +12,8 @@ function extractYouTubeVideoId(url) {
         videoId = url.split('youtu.be/')[1].split('?')[0];
     } else if (url.includes('youtube.com/embed/')) {
         videoId = url.split('embed/')[1].split('?')[0];
+    } else if (url.includes('youtube.com/shorts/')) {
+        videoId = url.split('shorts/')[1].split('?')[0];
     }
     
     return videoId;
