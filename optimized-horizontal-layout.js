@@ -78,6 +78,42 @@ function createDemoLinkSection(demoUrl) {
     `;
 }
 
+// New: Click-to-play YouTube cover
+function createYouTubeCoverWithPlay(videoUrl, title) {
+    const videoId = extractYouTubeVideoId(videoUrl);
+    if (!videoId) return '';
+
+    const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&rel=0`;
+    const containerId = `yt-cover-${videoId}-${Math.floor(Math.random() * 100000)}`;
+
+    return `
+        <div class="project-video-cover" id="${containerId}">
+            <img src="${thumbnailUrl}" alt="${title}" class="project-video-thumbnail">
+            <div class="video-overlay" onclick="playYouTubeVideo('${containerId}', '${embedUrl}', '${title}')">
+                <i class='fas fa-play-circle'></i>
+            </div>
+        </div>
+    `;
+}
+
+// Make playYouTubeVideo globally available
+window.playYouTubeVideo = function(containerId, embedUrl, title) {
+    const container = document.getElementById(containerId);
+    if (container) {
+        container.innerHTML = `
+            <iframe 
+                src="${embedUrl}" 
+                title="${title}" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                style="width:100%;height:100%;">
+            </iframe>
+        `;
+    }
+};
+
 // Main function to override createProjectCard with horizontal layout
 function createOptimizedHorizontalCards() {
     if (!window.dynamicProjectLoader) {
@@ -101,11 +137,11 @@ function createOptimizedHorizontalCards() {
         // Create cover section - prioritize demo URL for video
         let coverSection = '';
         if (demoUrl && isYouTubeVideo && isYouTubeVideo(demoUrl)) {
-            // Use autoplay YouTube video from demo field
-            coverSection = createAutoplayVideoCover ? createAutoplayVideoCover(demoUrl, title) : `<img src="${demoUrl}" alt="${title}" class="project-cover">`;
+            // Use click-to-play YouTube video from demo field
+            coverSection = createYouTubeCoverWithPlay(demoUrl, title);
         } else if (imageUrl && isYouTubeVideo && isYouTubeVideo(imageUrl)) {
-            // Use autoplay YouTube video from image field
-            coverSection = createAutoplayVideoCover ? createAutoplayVideoCover(imageUrl, title) : `<img src="${imageUrl}" alt="${title}" class="project-cover">`;
+            // Use click-to-play YouTube video from image field
+            coverSection = createYouTubeCoverWithPlay(imageUrl, title);
         } else if (imageUrl && imageUrl !== '') {
             // Use regular image
             coverSection = `<img src="${imageUrl}" alt="${title}" class="project-cover">`;
@@ -128,7 +164,7 @@ function createOptimizedHorizontalCards() {
         card.innerHTML = `
             <div class="project-image">
                 ${coverSection}
-                ${demoLinkSection}
+                <!-- Removed demoLinkSection -->
             </div>
             <div class="project-content">
                 <h3>${title}</h3>
@@ -193,7 +229,6 @@ function addOptimizedHorizontalStyles() {
             width: 100%;
             height: 300px;
             border: none;
-            pointer-events: none;
             transition: opacity 0.3s ease;
         }
         
