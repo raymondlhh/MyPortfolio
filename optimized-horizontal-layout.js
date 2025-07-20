@@ -4,8 +4,9 @@
 // Helper functions
 function extractYouTubeVideoId(url) {
     if (!url) return null;
-    
+    // Handle all YouTube URL formats, including Shorts
     let videoId = null;
+    // Standard watch URL
     if (url.includes('youtube.com/watch?v=')) {
         videoId = url.split('v=')[1].split('&')[0];
     } else if (url.includes('youtu.be/')) {
@@ -15,7 +16,11 @@ function extractYouTubeVideoId(url) {
     } else if (url.includes('youtube.com/shorts/')) {
         videoId = url.split('shorts/')[1].split('?')[0];
     }
-    
+    // Fallback: try to match with regex
+    if (!videoId) {
+        const match = url.match(/[?&]v=([^&]+)/);
+        if (match) videoId = match[1];
+    }
     return videoId;
 }
 
@@ -82,11 +87,10 @@ function createDemoLinkSection(demoUrl) {
 function createYouTubeCoverWithPlay(videoUrl, title) {
     const videoId = extractYouTubeVideoId(videoUrl);
     if (!videoId) return '';
-
     const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    // Always use the standard embed URL, even for Shorts
     const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&rel=0`;
     const containerId = `yt-cover-${videoId}-${Math.floor(Math.random() * 100000)}`;
-
     return `
         <div class="project-video-cover" id="${containerId}">
             <img src="${thumbnailUrl}" alt="${title}" class="project-video-thumbnail">
@@ -134,10 +138,10 @@ function createOptimizedHorizontalCards() {
         const demoUrl = project.demoUrl || project.Demo || project['Demo Link'] || '';
         const technologies = project.technologies || project.Technologies || project.Tags || [];
 
-        // Create cover section - prioritize demo URL for video
+        // Create cover section - always prioritize demoUrl YouTube video
         let coverSection = '';
         if (demoUrl && isYouTubeVideo && isYouTubeVideo(demoUrl)) {
-            // Use click-to-play YouTube video from demo field
+            // Always use click-to-play YouTube video from demo field if present
             coverSection = createYouTubeCoverWithPlay(demoUrl, title);
         } else if (imageUrl && isYouTubeVideo && isYouTubeVideo(imageUrl)) {
             // Use click-to-play YouTube video from image field
