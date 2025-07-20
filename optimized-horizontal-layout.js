@@ -194,6 +194,18 @@ function addOptimizedHorizontalStyles() {
             height: 300px;
             border: none;
             pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Ensure YouTube videos reload properly during tab transitions */
+        .project-category.active .project-video-cover iframe,
+        .others-category.active .project-video-cover iframe {
+            opacity: 1;
+        }
+        
+        .project-category:not(.active) .project-video-cover iframe,
+        .others-category:not(.active) .project-video-cover iframe {
+            opacity: 0;
         }
         
         .project-card.horizontal .project-content {
