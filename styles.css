@@ -1224,6 +1224,9 @@ html {
         width: 100%;
         max-width: 100%;
     }
+    .nav-logo {
+        margin-left: 20px;
+    }
     .hamburger {
         margin-right: 20px;
     }
