@@ -158,7 +158,15 @@ tabButtons.forEach(button => {
         
         // Add active class to clicked button and corresponding category
         button.classList.add('active');
-        document.getElementById(`${category}-projects`).classList.add('active');
+        const targetCategory = document.getElementById(`${category}-projects`);
+        targetCategory.classList.add('active');
+        
+        // Fix YouTube videos when switching XR project tabs
+        if (window.YouTubeTabFix && window.YouTubeTabFix.reloadYouTubeIframes) {
+            setTimeout(() => {
+                window.YouTubeTabFix.reloadYouTubeIframes(targetCategory);
+            }, 300);
+        }
         
         // Smooth scroll to projects section if not already there
         const projectsSection = document.getElementById('projects');
