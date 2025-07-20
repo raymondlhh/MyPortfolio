@@ -1217,6 +1217,9 @@ html {
         width: 100%;
         max-width: 100%;
     }
+    .hamburger {
+        margin-right: 16px;
+    }
     .skills-grid {
         justify-content: center !important;
         text-align: center !important;
