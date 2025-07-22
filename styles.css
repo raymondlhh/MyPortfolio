@@ -974,7 +974,7 @@ html, body {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: 100%;
         flex-direction: column;
         background-color: #1f2937; /* dark background */
         width: 100%;
