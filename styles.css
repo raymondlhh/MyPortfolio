@@ -967,6 +967,12 @@ html, body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .navbar {
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+    }
+    
     .hamburger {
         display: flex;
     }
@@ -974,7 +980,7 @@ html, body {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 100%;
+        top: 70px;
         flex-direction: column;
         background-color: #1f2937; /* dark background */
         width: 100%;
@@ -982,6 +988,7 @@ html, body {
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
         padding: 2rem 0;
+        z-index: 999;
     }
 
     .nav-menu.active {
@@ -1185,6 +1192,12 @@ html, body {
 /* Smooth scrolling for anchor links */
 html {
     scroll-padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 70px;
+    }
 } 
 
 .project-video-cover {
@@ -1223,6 +1236,8 @@ html {
         padding: 0 20px;
         width: 100%;
         max-width: 100%;
+        min-height: 70px;
+        align-items: center;
     }
     .hamburger {
         margin-right: 16px;
