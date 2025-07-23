@@ -1268,3 +1268,232 @@ html {
         padding-top: 90px;
     }
 } 
+
+/* Pagination System Styles */
+.pagination-container {
+    width: 100%;
+    position: relative;
+}
+
+.pages-container {
+    width: 100%;
+    position: relative;
+    min-height: 400px; /* Ensure consistent height */
+}
+
+.project-page {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    width: 100%;
+}
+
+.project-page .project-card {
+    flex: 1;
+    max-width: calc(50% - 1rem);
+    min-width: 300px;
+}
+
+/* Navigation Controls */
+.pagination-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 1rem 0;
+}
+
+.nav-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.nav-btn:hover:not(.disabled) {
+    background: var(--gradient-start);
+    transform: scale(1.1);
+}
+
+.nav-btn.disabled {
+    background: var(--text-muted);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.nav-btn.disabled:hover {
+    transform: none;
+}
+
+/* Page Indicators */
+.page-indicators {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.page-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-indicator:hover {
+    background: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.page-indicator.active {
+    background: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* Page Counter */
+.page-counter {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin: 0 1rem;
+}
+
+.current-page {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Responsive Design for Pagination */
+@media (max-width: 768px) {
+    .project-page {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .project-page .project-card {
+        max-width: 100%;
+        min-width: 280px;
+    }
+
+    .pagination-navigation {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .page-counter {
+        order: -1;
+        width: 100%;
+        text-align: center;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .nav-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .page-indicator {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-page {
+        gap: 1rem;
+    }
+
+    .project-page .project-card {
+        min-width: 260px;
+    }
+
+    .pagination-navigation {
+        margin-top: 1.5rem;
+    }
+
+    .nav-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+
+    .page-indicator {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* Touch-friendly navigation for mobile */
+@media (hover: none) and (pointer: coarse) {
+    .nav-btn {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .page-indicator {
+        min-width: 16px;
+        min-height: 16px;
+    }
+}
+
+/* Smooth transitions for page changes */
+.project-page {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Hover effects for navigation */
+.nav-btn:active:not(.disabled) {
+    transform: scale(0.95);
+}
+
+.page-indicator:active {
+    transform: scale(0.9);
+}
+
+/* Focus states for accessibility */
+.nav-btn:focus,
+.page-indicator:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .page-indicator {
+    border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .page-counter {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .nav-btn.disabled {
+    background: var(--text-muted);
+    border-color: var(--text-muted);
+} 

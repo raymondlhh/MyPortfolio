@@ -167,6 +167,32 @@ class DynamicProjectLoader {
 
             console.log(`Displayed ${projects.length} projects in ${containerSelector}`);
 
+            // Initialize pagination after projects are loaded
+            if (window.projectPagination) {
+                // Extract category ID from container selector
+                let categoryId = '';
+                if (containerSelector.includes('#')) {
+                    const idMatch = containerSelector.match(/#([^.\s]+)/);
+                    if (idMatch) {
+                        categoryId = idMatch[1];
+                    }
+                } else if (containerSelector.includes('.')) {
+                    // For class selectors, try to find the parent category
+                    const parentContainer = container.closest('.project-category, .others-category');
+                    if (parentContainer) {
+                        categoryId = parentContainer.id;
+                    }
+                }
+
+                if (categoryId) {
+                    // Wait a bit for DOM to update, then force refresh pagination
+                    // Use a longer delay to ensure the tab switch handler has finished
+                    setTimeout(() => {
+                        window.projectPagination.forceRefreshPagination(categoryId);
+                    }, 500);
+                }
+            }
+
         } catch (error) {
             console.error('Error displaying projects:', error);
             let container;
@@ -300,9 +326,31 @@ function setupOthersTabSwitching() {
             if (targetCategory) {
                 targetCategory.classList.add('active');
                 
+                // Handle pagination for the newly active category
+                if (window.projectPagination) {
+                    window.projectPagination.handleTabSwitch(targetCategory.id);
+                }
+                
                 // Check if projects are already loaded for this category
                 const containerSelector = `#${category}-projects .projects-grid`;
-                const container = document.querySelector(containerSelector);
+                let container;
+                
+                // Handle CSS selector with hyphens by using getElementById for IDs
+                if (containerSelector.includes('#')) {
+                    const idMatch = containerSelector.match(/#([^.\s]+)/);
+                    if (idMatch) {
+                        const elementId = idMatch[1];
+                        const element = document.getElementById(elementId);
+                        if (element) {
+                            container = element.querySelector('.projects-grid');
+                        }
+                    }
+                }
+                
+                // Fallback to querySelector if getElementById didn't work
+                if (!container) {
+                    container = document.querySelector(containerSelector);
+                }
                 
                 if (container && container.children.length > 0) {
                     // Projects are already loaded, just show the category

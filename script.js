@@ -161,6 +161,11 @@ tabButtons.forEach(button => {
         const targetCategory = document.getElementById(`${category}-projects`);
         targetCategory.classList.add('active');
         
+        // Handle pagination for the newly active category
+        if (window.projectPagination) {
+            window.projectPagination.handleTabSwitch(targetCategory.id);
+        }
+        
         // Fix YouTube videos when switching XR project tabs
         if (window.YouTubeTabFix && window.YouTubeTabFix.reloadYouTubeIframes) {
             setTimeout(() => {
