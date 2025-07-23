@@ -83,6 +83,30 @@ html, body {
     transition: all 0.3s ease;
 }
 
+/* Mobile viewport adjustments for social media apps */
+@supports (padding: max(0px)) {
+    .navbar {
+        padding-top: max(0.75rem, env(safe-area-inset-top));
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+    }
+}
+
+/* Additional mobile browser adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        /* Add extra top padding for mobile browsers */
+        padding-top: calc(0.75rem + 20px);
+    }
+    
+    /* Adjust for social media in-app browsers */
+    @supports (padding: max(0px)) {
+        .navbar {
+            padding-top: max(calc(0.75rem + 20px), env(safe-area-inset-top));
+        }
+    }
+}
+
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -90,17 +114,20 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 60px;
 }
 
 .nav-logo {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
+    height: 100%;
 }
 .nav-logo .nav-desc {
     font-size: 0.9rem;
     color: #b0b8d1;
-    margin-top: -4px;
+    margin-top: -2px;
     margin-left: 2px;
     font-weight: 400;
     letter-spacing: 0.5px;
@@ -112,6 +139,7 @@ html, body {
     color: var(--primary-color);
     text-decoration: none;
     transition: color 0.3s ease;
+    line-height: 1.2;
 }
 
 .nav-logo a:hover {
@@ -156,6 +184,9 @@ html, body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    justify-content: center;
+    height: 100%;
+    align-self: center;
 }
 
 .bar {
@@ -968,19 +999,22 @@ html, body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        min-height: 70px;
+        min-height: 80px;
         display: flex;
         align-items: center;
+        padding: 0.5rem 0;
     }
     
     .hamburger {
         display: flex;
+        align-self: center;
+        margin-top: 0;
     }
 
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: 80px;
         flex-direction: column;
         background-color: #1f2937; /* dark background */
         width: 100%;
@@ -1107,6 +1141,32 @@ html, body {
 }
 
 @media (max-width: 480px) {
+    .navbar {
+        min-height: 85px;
+        padding: 0.75rem 0;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+        min-height: 85px;
+    }
+    
+    .hamburger {
+        margin-top: 0;
+    }
+    
+    .nav-logo {
+        margin-top: 0;
+    }
+    
+    .nav-logo a {
+        font-size: 1.3rem;
+    }
+    
+    .nav-logo .nav-desc {
+        font-size: 0.8rem;
+    }
+
     .hero-title {
         font-size: 2rem;
     }
@@ -1172,8 +1232,12 @@ html, body {
         padding: 0 15px;
     }
 
-    .nav-container {
-        padding: 0 15px;
+    .about,
+    .skills,
+    .projects,
+    .others,
+    .contact {
+        padding-top: 125px;
     }
 }
 
@@ -1196,7 +1260,13 @@ html {
 
 @media (max-width: 768px) {
     html {
-        scroll-padding-top: 70px;
+        scroll-padding-top: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        scroll-padding-top: 105px;
     }
 } 
 
@@ -1236,11 +1306,12 @@ html {
         padding: 0 20px;
         width: 100%;
         max-width: 100%;
-        min-height: 70px;
+        min-height: 80px;
         align-items: center;
     }
     .hamburger {
         margin-right: 16px;
+        margin-top: 0;
     }
     .skills-grid {
         justify-content: center !important;
@@ -1265,7 +1336,7 @@ html {
     .projects,
     .others,
     .contact {
-        padding-top: 90px;
+        padding-top: 120px;
     }
 } 
 
