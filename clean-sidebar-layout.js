@@ -18,7 +18,7 @@ function createCleanSidebarLayout() {
                     <img src="assets/images/profiles/Profile.jpg" alt="Raymond Ling Heng Hua" class="sidebar-profile-image">
                 </div>
                 <h2 class="sidebar-name">Raymond Ling Heng Hua</h2>
-                <p class="sidebar-cgpa">CGPA 3.02</p>
+                <p class="sidebar-cgpa">CGPA 3.07</p>
             </div>
             
             <nav class="sidebar-nav">
