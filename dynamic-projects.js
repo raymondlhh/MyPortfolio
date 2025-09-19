@@ -69,10 +69,19 @@ class DynamicProjectLoader {
         const githubUrl = project.githubUrl || project['GitHub Link'] || '';
         const technologies = project.technologies || project.Technologies || [];
 
-        // Create image section
+        // Create image/video section
         let imageSection = '';
-        if (imageUrl && imageUrl !== '') {
-            imageSection = `<img src="${imageUrl}" alt="${title}" class="project-cover">`;
+        
+        // Check if demoUrl is a YouTube video first
+        if (demoUrl && this.isYouTubeVideo(demoUrl)) {
+            imageSection = this.createVideoCover(demoUrl, title);
+        } else if (imageUrl && imageUrl !== '') {
+            // Check if imageUrl is a YouTube video
+            if (this.isYouTubeVideo(imageUrl)) {
+                imageSection = this.createVideoCover(imageUrl, title);
+            } else {
+                imageSection = `<img src="${imageUrl}" alt="${title}" class="project-cover">`;
+            }
         } else {
             imageSection = `
                 <div class="project-placeholder">
@@ -113,6 +122,64 @@ class DynamicProjectLoader {
         `;
 
         return card;
+    }
+
+    // Helper method to check if URL is a YouTube video
+    isYouTubeVideo(url) {
+        if (!url) return false;
+        return url.includes('youtube.com') || url.includes('youtu.be');
+    }
+
+    // Helper method to extract YouTube video ID
+    extractYouTubeVideoId(url) {
+        if (!url) return '';
+        
+        let videoId = '';
+        if (url.includes('youtube.com/watch?v=')) {
+            videoId = url.split('v=')[1].split('&')[0];
+        } else if (url.includes('youtu.be/')) {
+            videoId = url.split('youtu.be/')[1].split('?')[0];
+        } else if (url.includes('youtube.com/shorts/')) {
+            videoId = url.split('shorts/')[1].split('?')[0];
+        }
+        
+        return videoId;
+    }
+
+    // Helper method to create YouTube embed URL
+    createYouTubeEmbedUrl(videoId) {
+        return `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&showinfo=0&controls=1&autoplay=0`;
+    }
+
+    // Helper method to create video cover HTML
+    createVideoCover(videoUrl, title) {
+        const videoId = this.extractYouTubeVideoId(videoUrl);
+        
+        if (!videoId) {
+            // Fallback to placeholder if not a valid YouTube URL
+            return `
+                <div class="project-placeholder">
+                    <i class="fas fa-vr-cardboard"></i>
+                </div>
+            `;
+        }
+        
+        const embedUrl = this.createYouTubeEmbedUrl(videoId);
+        
+        return `
+            <div class="project-video-cover">
+                <iframe 
+                    src="${embedUrl}" 
+                    title="${title}" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+                <div class="video-overlay">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+            </div>
+        `;
     }
 
     // Display projects in a container
