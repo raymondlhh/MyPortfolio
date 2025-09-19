@@ -140,10 +140,10 @@ function createOptimizedHorizontalCards() {
 
         // Create cover section - always prioritize demoUrl YouTube video
         let coverSection = '';
-        if (demoUrl && isYouTubeVideo && isYouTubeVideo(demoUrl)) {
+        if (demoUrl && isYouTubeVideo(demoUrl)) {
             // Always use click-to-play YouTube video from demo field if present
             coverSection = createYouTubeCoverWithPlay(demoUrl, title);
-        } else if (imageUrl && isYouTubeVideo && isYouTubeVideo(imageUrl)) {
+        } else if (imageUrl && isYouTubeVideo(imageUrl)) {
             // Use click-to-play YouTube video from image field
             coverSection = createYouTubeCoverWithPlay(imageUrl, title);
         } else if (imageUrl && imageUrl !== '') {

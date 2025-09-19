@@ -25,10 +25,10 @@ function removeProjectDescriptions() {
 
         // Create cover section - prioritize demo URL for video
         let coverSection = '';
-        if (demoUrl && isYouTubeVideo && isYouTubeVideo(demoUrl)) {
+        if (demoUrl && isYouTubeVideo(demoUrl)) {
             // Use autoplay YouTube video from demo field
             coverSection = createAutoplayVideoCover ? createAutoplayVideoCover(demoUrl, title) : `<img src="${demoUrl}" alt="${title}" class="project-cover">`;
-        } else if (imageUrl && isYouTubeVideo && isYouTubeVideo(imageUrl)) {
+        } else if (imageUrl && isYouTubeVideo(imageUrl)) {
             // Use autoplay YouTube video from image field
             coverSection = createAutoplayVideoCover ? createAutoplayVideoCover(imageUrl, title) : `<img src="${imageUrl}" alt="${title}" class="project-cover">`;
         } else if (imageUrl && imageUrl !== '') {
