@@ -311,9 +311,9 @@ class DynamicProjectLoader {
             case '':
                 // Load XR Projects
                 console.log('Loading XR Projects...');
-                await this.displayProjects('#vr-projects .projects-grid', 'VR');
-                await this.displayProjects('#ar-projects .projects-grid', 'AR');
-                await this.displayProjects('#mr-projects .projects-grid', 'MR');
+                await this.displayProjects('#vr-projects .projects-grid', 'Virtual Reality');
+                await this.displayProjects('#ar-projects .projects-grid', 'Augmented Reality');
+                await this.displayProjects('#mr-projects .projects-grid', 'Mixed Reality');
                 
                 // Load all others categories
                 console.log('Loading all others categories...');
