@@ -85,22 +85,16 @@ function createDemoLinkSection(demoUrl) {
 
 // New: Click-to-play YouTube cover
 function createYouTubeCoverWithPlay(videoUrl, title) {
-    console.log('createYouTubeCoverWithPlay called with:', { videoUrl, title });
     const videoId = extractYouTubeVideoId(videoUrl);
-    console.log('Extracted video ID:', videoId);
-    if (!videoId) {
-        console.log('No video ID found, returning empty string');
-        return '';
-    }
+    if (!videoId) return '';
     const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
     // Always use the standard embed URL, even for Shorts
     const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&rel=0`;
     const containerId = `yt-cover-${videoId}-${Math.floor(Math.random() * 100000)}`;
-    console.log('Created YouTube cover with:', { videoId, thumbnailUrl, embedUrl, containerId });
     return `
         <div class="project-video-cover" id="${containerId}">
             <img src="${thumbnailUrl}" alt="${title}" class="project-video-thumbnail">
-            <div class="video-overlay" data-container-id="${containerId}" data-embed-url="${embedUrl}" data-title="${title}">
+            <div class="video-overlay" onclick="playYouTubeVideo('${containerId}', '${embedUrl}', '${title}')">
                 <i class='fas fa-play-circle'></i>
             </div>
         </div>
@@ -109,10 +103,8 @@ function createYouTubeCoverWithPlay(videoUrl, title) {
 
 // Make playYouTubeVideo globally available
 window.playYouTubeVideo = function(containerId, embedUrl, title) {
-    console.log('playYouTubeVideo called with:', { containerId, embedUrl, title });
     const container = document.getElementById(containerId);
     if (container) {
-        console.log('Container found, replacing content with iframe');
         container.innerHTML = `
             <iframe 
                 src="${embedUrl}" 
@@ -123,9 +115,6 @@ window.playYouTubeVideo = function(containerId, embedUrl, title) {
                 style="width:100%;height:100%;">
             </iframe>
         `;
-        console.log('Iframe inserted successfully');
-    } else {
-        console.error('Container not found:', containerId);
     }
 };
 
@@ -146,36 +135,22 @@ function createOptimizedHorizontalCards() {
         const title = project.title || project.Name || 'Untitled Project';
         const description = project.description || project.Description || 'No description available';
         const imageUrl = project.imageUrl || project.Image || '';
-        const demoUrl = project.demoUrl || project.Demo || project['Demo Link'] || project.demo || '';
+        const demoUrl = project.demoUrl || project.Demo || project['Demo Link'] || '';
         const technologies = project.technologies || project.Technologies || project.Tags || [];
-
-        // Debug logging for AR projects
-        if (title.toLowerCase().includes('ar') || title.toLowerCase().includes('augmented')) {
-            console.log('AR Project Debug:', {
-                title,
-                demoUrl,
-                imageUrl,
-                project: project
-            });
-        }
 
         // Create cover section - always prioritize demoUrl YouTube video
         let coverSection = '';
         if (demoUrl && isYouTubeVideo && isYouTubeVideo(demoUrl)) {
             // Always use click-to-play YouTube video from demo field if present
-            console.log('Creating YouTube video cover for demoUrl:', demoUrl);
             coverSection = createYouTubeCoverWithPlay(demoUrl, title);
         } else if (imageUrl && isYouTubeVideo && isYouTubeVideo(imageUrl)) {
             // Use click-to-play YouTube video from image field
-            console.log('Creating YouTube video cover for imageUrl:', imageUrl);
             coverSection = createYouTubeCoverWithPlay(imageUrl, title);
         } else if (imageUrl && imageUrl !== '') {
             // Use regular image
-            console.log('Using regular image:', imageUrl);
             coverSection = `<img src="${imageUrl}" alt="${title}" class="project-cover">`;
         } else {
             // Fallback to placeholder
-            console.log('Using placeholder for project:', title);
             coverSection = `
                 <div class="project-placeholder">
                     <i class="fas fa-vr-cardboard"></i>
@@ -206,27 +181,6 @@ function createOptimizedHorizontalCards() {
     };
     
     console.log('✅ Optimized horizontal project cards created');
-}
-
-// Function to set up video overlay click handlers
-function setupVideoOverlayHandlers() {
-    // Use event delegation to handle clicks on video overlays
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.video-overlay')) {
-            const overlay = e.target.closest('.video-overlay');
-            const containerId = overlay.getAttribute('data-container-id');
-            const embedUrl = overlay.getAttribute('data-embed-url');
-            const title = overlay.getAttribute('data-title');
-            
-            console.log('Video overlay clicked:', { containerId, embedUrl, title });
-            
-            if (containerId && embedUrl && title) {
-                playYouTubeVideo(containerId, embedUrl, title);
-            }
-        }
-    });
-    
-    console.log('✅ Video overlay handlers set up');
 }
 
 // Add CSS styles for horizontal card layout (same as original)
@@ -273,41 +227,6 @@ function addOptimizedHorizontalStyles() {
             height: 300px;
             overflow: hidden;
             background: #000;
-        }
-        
-        .project-video-thumbnail {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        
-        .video-overlay:hover {
-            background: rgba(0, 0, 0, 0.5);
-        }
-        
-        .video-overlay i {
-            font-size: 4rem;
-            color: #ff0000;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
-        }
-        
-        .video-overlay:hover i {
-            transform: scale(1.1);
         }
         
         .project-video-cover iframe {
@@ -650,7 +569,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         createOptimizedHorizontalCards();
         addOptimizedHorizontalStyles();
-        setupVideoOverlayHandlers();
         setupTabSwitchingListener();
         console.log('🚀 Optimized horizontal layout initialized');
     }, 100);
@@ -662,7 +580,6 @@ if (document.readyState === 'loading') {
         setTimeout(() => {
             createOptimizedHorizontalCards();
             addOptimizedHorizontalStyles();
-            setupVideoOverlayHandlers();
             setupTabSwitchingListener();
             console.log('🚀 Optimized horizontal layout initialized');
         }, 100);
@@ -671,7 +588,6 @@ if (document.readyState === 'loading') {
     setTimeout(() => {
         createOptimizedHorizontalCards();
         addOptimizedHorizontalStyles();
-        setupVideoOverlayHandlers();
         setupTabSwitchingListener();
         console.log('🚀 Optimized horizontal layout initialized');
     }, 100);
