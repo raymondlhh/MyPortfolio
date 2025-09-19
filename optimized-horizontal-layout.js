@@ -100,7 +100,7 @@ function createYouTubeCoverWithPlay(videoUrl, title) {
     return `
         <div class="project-video-cover" id="${containerId}">
             <img src="${thumbnailUrl}" alt="${title}" class="project-video-thumbnail">
-            <div class="video-overlay" onclick="playYouTubeVideo('${containerId}', '${embedUrl}', '${title}')">
+            <div class="video-overlay" data-container-id="${containerId}" data-embed-url="${embedUrl}" data-title="${title}">
                 <i class='fas fa-play-circle'></i>
             </div>
         </div>
@@ -109,8 +109,10 @@ function createYouTubeCoverWithPlay(videoUrl, title) {
 
 // Make playYouTubeVideo globally available
 window.playYouTubeVideo = function(containerId, embedUrl, title) {
+    console.log('playYouTubeVideo called with:', { containerId, embedUrl, title });
     const container = document.getElementById(containerId);
     if (container) {
+        console.log('Container found, replacing content with iframe');
         container.innerHTML = `
             <iframe 
                 src="${embedUrl}" 
@@ -121,6 +123,9 @@ window.playYouTubeVideo = function(containerId, embedUrl, title) {
                 style="width:100%;height:100%;">
             </iframe>
         `;
+        console.log('Iframe inserted successfully');
+    } else {
+        console.error('Container not found:', containerId);
     }
 };
 
@@ -201,6 +206,27 @@ function createOptimizedHorizontalCards() {
     };
     
     console.log('✅ Optimized horizontal project cards created');
+}
+
+// Function to set up video overlay click handlers
+function setupVideoOverlayHandlers() {
+    // Use event delegation to handle clicks on video overlays
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.video-overlay')) {
+            const overlay = e.target.closest('.video-overlay');
+            const containerId = overlay.getAttribute('data-container-id');
+            const embedUrl = overlay.getAttribute('data-embed-url');
+            const title = overlay.getAttribute('data-title');
+            
+            console.log('Video overlay clicked:', { containerId, embedUrl, title });
+            
+            if (containerId && embedUrl && title) {
+                playYouTubeVideo(containerId, embedUrl, title);
+            }
+        }
+    });
+    
+    console.log('✅ Video overlay handlers set up');
 }
 
 // Add CSS styles for horizontal card layout (same as original)
@@ -624,6 +650,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         createOptimizedHorizontalCards();
         addOptimizedHorizontalStyles();
+        setupVideoOverlayHandlers();
         setupTabSwitchingListener();
         console.log('🚀 Optimized horizontal layout initialized');
     }, 100);
@@ -635,6 +662,7 @@ if (document.readyState === 'loading') {
         setTimeout(() => {
             createOptimizedHorizontalCards();
             addOptimizedHorizontalStyles();
+            setupVideoOverlayHandlers();
             setupTabSwitchingListener();
             console.log('🚀 Optimized horizontal layout initialized');
         }, 100);
@@ -643,6 +671,7 @@ if (document.readyState === 'loading') {
     setTimeout(() => {
         createOptimizedHorizontalCards();
         addOptimizedHorizontalStyles();
+        setupVideoOverlayHandlers();
         setupTabSwitchingListener();
         console.log('🚀 Optimized horizontal layout initialized');
     }, 100);
