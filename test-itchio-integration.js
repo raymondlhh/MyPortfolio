@@ -125,3 +125,4 @@ window.testItchioIntegration = testItchioIntegration;
 window.showItchioFunctions = showItchioFunctions;
 
 console.log('🧪 Itch.io Integration Test Suite initialized!');
+

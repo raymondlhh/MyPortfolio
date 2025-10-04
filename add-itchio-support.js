@@ -266,3 +266,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 console.log('Itch.io Support Manager initialized!');
+
