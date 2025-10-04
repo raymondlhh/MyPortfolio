@@ -96,6 +96,36 @@ function createDemoLinkSection(demoUrl) {
     `;
 }
 
+// Function to create Itch.io link section (compact)
+function createItchioLinkSection(itchioUrl) {
+    if (!itchioUrl || itchioUrl === '') {
+        return '';
+    }
+    
+    return `
+        <div class="project-itchio-link">
+            <a href="${itchioUrl}" class="itchio-button" target="_blank" rel="noopener noreferrer" title="Play Game">
+                <i class="fas fa-gamepad"></i>
+            </a>
+        </div>
+    `;
+}
+
+// Function to create GitHub link section (compact)
+function createGitHubLinkSection(githubUrl) {
+    if (!githubUrl || githubUrl === '') {
+        return '';
+    }
+    
+    return `
+        <div class="project-github-link">
+            <a href="${githubUrl}" class="github-button" target="_blank" rel="noopener noreferrer" title="View Code">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    `;
+}
+
 // Override the original createProjectCard method with poker card size
 function createPokerCardSizeProjectCards() {
     if (!window.dynamicProjectLoader) {
@@ -114,6 +144,8 @@ function createPokerCardSizeProjectCards() {
         const description = project.description || project.Description || 'No description available';
         const imageUrl = project.imageUrl || project.Image || '';
         const demoUrl = project.demoUrl || project.Demo || project['Demo Link'] || '';
+        const githubUrl = project.githubUrl || project['GitHub Link'] || '';
+        const itchioUrl = project.itchioUrl || project.Itchio || project['Itch.io'] || '';
         const technologies = project.technologies || project.Technologies || project.Tags || [];
 
         // Create cover section - prioritize demo URL for video
@@ -139,14 +171,20 @@ function createPokerCardSizeProjectCards() {
         // Create technologies section (compact)
         const technologiesSection = createTechnologiesSection(technologies);
         
-        // Create demo link section (compact)
+        // Create link sections (compact)
         const demoLinkSection = createDemoLinkSection(demoUrl);
+        const githubLinkSection = createGitHubLinkSection(githubUrl);
+        const itchioLinkSection = createItchioLinkSection(itchioUrl);
 
         // Poker card size layout
         card.innerHTML = `
             <div class="project-image">
                 ${coverSection}
-                ${demoLinkSection}
+                <div class="project-links">
+                    ${demoLinkSection}
+                    ${githubLinkSection}
+                    ${itchioLinkSection}
+                </div>
             </div>
             <div class="project-content">
                 <h3>${title}</h3>
@@ -271,28 +309,41 @@ function addPokerCardStyles() {
             font-weight: 500;
         }
         
-        .project-demo-link {
+        .project-links {
             position: absolute;
             top: 0.5rem;
             right: 0.5rem;
             z-index: 10;
+            display: flex;
+            gap: 0.5rem;
         }
         
-        .demo-button {
+        .project-demo-link,
+        .project-github-link,
+        .project-itchio-link {
+            display: flex;
+        }
+        
+        .demo-button,
+        .github-button,
+        .itchio-button {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 32px;
             height: 32px;
-            background: #ff0000;
             color: white;
             border-radius: 50%;
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
             backdrop-filter: blur(4px);
+        }
+        
+        .demo-button {
+            background: #ff0000;
+            box-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
         }
         
         .demo-button:hover {
@@ -301,7 +352,31 @@ function addPokerCardStyles() {
             box-shadow: 0 4px 8px rgba(255, 0, 0, 0.4);
         }
         
-        .demo-button i {
+        .github-button {
+            background: #333;
+            box-shadow: 0 2px 4px rgba(51, 51, 51, 0.3);
+        }
+        
+        .github-button:hover {
+            background: #555;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(51, 51, 51, 0.4);
+        }
+        
+        .itchio-button {
+            background: #fa5c5c;
+            box-shadow: 0 2px 4px rgba(250, 92, 92, 0.3);
+        }
+        
+        .itchio-button:hover {
+            background: #e53e3e;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(250, 92, 92, 0.4);
+        }
+        
+        .demo-button i,
+        .github-button i,
+        .itchio-button i {
             font-size: 0.9rem;
         }
         
@@ -376,12 +451,16 @@ function addPokerCardStyles() {
                 padding: 0.1rem 0.4rem;
             }
             
-            .demo-button {
+            .demo-button,
+            .github-button,
+            .itchio-button {
                 width: 28px;
                 height: 28px;
             }
             
-            .demo-button i {
+            .demo-button i,
+            .github-button i,
+            .itchio-button i {
                 font-size: 0.8rem;
             }
         }

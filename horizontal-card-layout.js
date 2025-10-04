@@ -35,6 +35,30 @@ function createDemoLinkSection(demoUrl) {
     `;
 }
 
+function createItchioLinkSection(itchioUrl) {
+    if (!itchioUrl) return '';
+    
+    return `
+        <div class="project-itchio-link">
+            <a href="${itchioUrl}" target="_blank" rel="noopener noreferrer" class="itchio-button" title="Play Game">
+                <i class="fas fa-gamepad"></i>
+            </a>
+        </div>
+    `;
+}
+
+function createGitHubLinkSection(githubUrl) {
+    if (!githubUrl) return '';
+    
+    return `
+        <div class="project-github-link">
+            <a href="${githubUrl}" target="_blank" rel="noopener noreferrer" class="github-button" title="View Code">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    `;
+}
+
 function isYouTubeVideo(url) {
     if (!url) return false;
     return url.includes('youtube.com') || url.includes('youtu.be');
@@ -88,6 +112,8 @@ function createHorizontalProjectCards() {
         const description = project.description || project.Description || 'No description available';
         const imageUrl = project.imageUrl || project.Image || '';
         const demoUrl = project.demoUrl || project.Demo || project['Demo Link'] || '';
+        const githubUrl = project.githubUrl || project['GitHub Link'] || '';
+        const itchioUrl = project.itchioUrl || project.Itchio || project['Itch.io'] || '';
         const technologies = project.technologies || project.Technologies || project.Tags || [];
 
         // Create cover section - prioritize demo URL for video
@@ -113,14 +139,20 @@ function createHorizontalProjectCards() {
         // Create technologies section
         const technologiesSection = createTechnologiesSection(technologies);
         
-        // Create demo link section
+        // Create link sections
         const demoLinkSection = createDemoLinkSection(demoUrl);
+        const githubLinkSection = createGitHubLinkSection(githubUrl);
+        const itchioLinkSection = createItchioLinkSection(itchioUrl);
 
         // Horizontal card layout
         card.innerHTML = `
             <div class="project-image">
                 ${coverSection}
-                ${demoLinkSection}
+                <div class="project-links">
+                    ${demoLinkSection}
+                    ${githubLinkSection}
+                    ${itchioLinkSection}
+                </div>
             </div>
             <div class="project-content">
                 <h3>${title}</h3>
@@ -261,7 +293,7 @@ function addHorizontalCardStyles() {
             font-weight: 500;
         }
         
-        .project-demo-link {
+        .project-links {
             position: absolute;
             top: 0.75rem;
             right: 0.75rem;
@@ -269,28 +301,51 @@ function addHorizontalCardStyles() {
             opacity: 0;
             transform: scale(0.8);
             transition: all 0.3s ease;
+            display: flex;
+            gap: 0.75rem;
         }
         
-        .project-card.horizontal .project-image:hover .project-demo-link {
+        .project-card.horizontal .project-image:hover .project-links {
             opacity: 1;
             transform: scale(1);
         }
         
-        .demo-button {
+        .project-demo-link,
+        .project-github-link,
+        .project-itchio-link {
+            display: flex;
+        }
+        
+        .demo-button,
+        .github-button,
+        .itchio-button {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 36px;
             height: 36px;
-            background: #ff0000;
             color: white;
             border-radius: 50%;
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
             backdrop-filter: blur(4px);
+        }
+        
+        .demo-button {
+            background: #ff0000;
+            box-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
+        }
+        
+        .github-button {
+            background: #333;
+            box-shadow: 0 2px 4px rgba(51, 51, 51, 0.3);
+        }
+        
+        .itchio-button {
+            background: #fa5c5c;
+            box-shadow: 0 2px 4px rgba(250, 92, 92, 0.3);
         }
         
         .demo-button:hover {
@@ -299,7 +354,21 @@ function addHorizontalCardStyles() {
             box-shadow: 0 4px 8px rgba(255, 0, 0, 0.4);
         }
         
-        .demo-button i {
+        .github-button:hover {
+            background: #555;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(51, 51, 51, 0.4);
+        }
+        
+        .itchio-button:hover {
+            background: #e53e3e;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(250, 92, 92, 0.4);
+        }
+        
+        .demo-button i,
+        .github-button i,
+        .itchio-button i {
             font-size: 1rem;
         }
         

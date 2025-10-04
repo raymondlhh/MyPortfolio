@@ -94,6 +94,38 @@ function createDemoLinkSection(demoUrl) {
     `;
 }
 
+// Function to create Itch.io link section
+function createItchioLinkSection(itchioUrl) {
+    if (!itchioUrl || itchioUrl === '') {
+        return '';
+    }
+    
+    return `
+        <div class="project-itchio-link">
+            <a href="${itchioUrl}" class="itchio-button" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-gamepad"></i>
+                <span>Play</span>
+            </a>
+        </div>
+    `;
+}
+
+// Function to create GitHub link section
+function createGitHubLinkSection(githubUrl) {
+    if (!githubUrl || githubUrl === '') {
+        return '';
+    }
+    
+    return `
+        <div class="project-github-link">
+            <a href="${githubUrl}" class="github-button" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+                <span>Code</span>
+            </a>
+        </div>
+    `;
+}
+
 // Override the original createProjectCard method with enhanced version
 function createEnhancedProjectCards() {
     if (!window.dynamicProjectLoader) {
@@ -112,6 +144,8 @@ function createEnhancedProjectCards() {
         const description = project.description || project.Description || 'No description available';
         const imageUrl = project.imageUrl || project.Image || '';
         const demoUrl = project.demoUrl || project.Demo || project['Demo Link'] || '';
+        const githubUrl = project.githubUrl || project['GitHub Link'] || '';
+        const itchioUrl = project.itchioUrl || project.Itchio || project['Itch.io'] || '';
         const technologies = project.technologies || project.Technologies || project.Tags || [];
 
         // Create cover section - prioritize demo URL for video
@@ -137,10 +171,12 @@ function createEnhancedProjectCards() {
         // Create technologies section
         const technologiesSection = createTechnologiesSection(technologies);
         
-        // Create demo link section
+        // Create link sections
         const demoLinkSection = createDemoLinkSection(demoUrl);
+        const githubLinkSection = createGitHubLinkSection(githubUrl);
+        const itchioLinkSection = createItchioLinkSection(itchioUrl);
 
-        // Enhanced card with name, description, technologies, and demo link
+        // Enhanced card with name, description, technologies, and all links
         card.innerHTML = `
             <div class="project-image">
                 ${coverSection}
@@ -149,7 +185,11 @@ function createEnhancedProjectCards() {
                 <h3>${title}</h3>
                 <p>${description}</p>
                 ${technologiesSection}
-                ${demoLinkSection}
+                <div class="project-links">
+                    ${demoLinkSection}
+                    ${githubLinkSection}
+                    ${itchioLinkSection}
+                </div>
             </div>
         `;
 
@@ -242,16 +282,25 @@ function addEnhancedCardStyles() {
             letter-spacing: 0.5px;
         }
         
-        .project-demo-link {
+        .project-links {
             display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
             justify-content: flex-end;
         }
         
-        .demo-button {
+        .project-demo-link,
+        .project-github-link,
+        .project-itchio-link {
+            display: flex;
+        }
+        
+        .demo-button,
+        .github-button,
+        .itchio-button {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: #ff0000;
             color: white;
             padding: 0.75rem 1.25rem;
             border-radius: 8px;
@@ -259,6 +308,10 @@ function addEnhancedCardStyles() {
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+        }
+        
+        .demo-button {
+            background: #ff0000;
             box-shadow: 0 2px 4px rgba(255, 0, 0, 0.2);
         }
         
@@ -268,7 +321,31 @@ function addEnhancedCardStyles() {
             box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
         }
         
-        .demo-button i {
+        .github-button {
+            background: #333;
+            box-shadow: 0 2px 4px rgba(51, 51, 51, 0.2);
+        }
+        
+        .github-button:hover {
+            background: #555;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(51, 51, 51, 0.3);
+        }
+        
+        .itchio-button {
+            background: #fa5c5c;
+            box-shadow: 0 2px 4px rgba(250, 92, 92, 0.2);
+        }
+        
+        .itchio-button:hover {
+            background: #e53e3e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(250, 92, 92, 0.3);
+        }
+        
+        .demo-button i,
+        .github-button i,
+        .itchio-button i {
             font-size: 1.1rem;
         }
         
@@ -333,9 +410,15 @@ function addEnhancedCardStyles() {
                 padding: 0.2rem 0.6rem;
             }
             
-            .demo-button {
+            .demo-button,
+            .github-button,
+            .itchio-button {
                 padding: 0.6rem 1rem;
                 font-size: 0.85rem;
+            }
+            
+            .project-links {
+                gap: 0.5rem;
             }
         }
     `;

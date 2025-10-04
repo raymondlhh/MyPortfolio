@@ -63,6 +63,42 @@ function isYouTubeVideo(url) {
     return url.includes('youtube.com') || url.includes('youtu.be');
 }
 
+function createDemoLinkSection(demoUrl) {
+    if (!demoUrl) return '';
+    
+    return `
+        <div class="project-demo-link">
+            <a href="${demoUrl}" target="_blank" rel="noopener noreferrer" class="demo-button" title="Watch Demo">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+    `;
+}
+
+function createItchioLinkSection(itchioUrl) {
+    if (!itchioUrl) return '';
+    
+    return `
+        <div class="project-itchio-link">
+            <a href="${itchioUrl}" target="_blank" rel="noopener noreferrer" class="itchio-button" title="Play Game">
+                <i class="fas fa-gamepad"></i>
+            </a>
+        </div>
+    `;
+}
+
+function createGitHubLinkSection(githubUrl) {
+    if (!githubUrl) return '';
+    
+    return `
+        <div class="project-github-link">
+            <a href="${githubUrl}" target="_blank" rel="noopener noreferrer" class="github-button" title="View Code">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    `;
+}
+
 // Override the original createProjectCard method with simplified version
 function createSimplifiedProjectCards() {
     if (!window.dynamicProjectLoader) {
@@ -82,6 +118,8 @@ function createSimplifiedProjectCards() {
         const imageUrl = project.imageUrl || project.Image || '';
         const videoUrl = project.videoUrl || project.Video || '';
         const demoUrl = project.demoUrl || project['Demo Link'] || '';
+        const githubUrl = project.githubUrl || project['GitHub Link'] || '';
+        const itchioUrl = project.itchioUrl || project.Itchio || project['Itch.io'] || '';
 
         // Create cover section - prioritize video over image
         let coverSection = '';
@@ -107,9 +145,19 @@ function createSimplifiedProjectCards() {
         }
 
         // Simplified card with only name and description
+        // Create link sections
+        const demoLinkSection = createDemoLinkSection(demoUrl);
+        const githubLinkSection = createGitHubLinkSection(githubUrl);
+        const itchioLinkSection = createItchioLinkSection(itchioUrl);
+
         card.innerHTML = `
             <div class="project-image">
                 ${coverSection}
+                <div class="project-links">
+                    ${demoLinkSection}
+                    ${githubLinkSection}
+                    ${itchioLinkSection}
+                </div>
             </div>
             <div class="project-content">
                 <h3>${title}</h3>
@@ -239,6 +287,77 @@ function addSimplifiedCardStyles() {
             .project-card.simplified p {
                 font-size: 0.9rem;
             }
+        }
+        
+        .project-links {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            z-index: 10;
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .project-demo-link,
+        .project-github-link,
+        .project-itchio-link {
+            display: flex;
+        }
+        
+        .demo-button,
+        .github-button,
+        .itchio-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+        
+        .demo-button {
+            background: #ff0000;
+            box-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
+        }
+        
+        .demo-button:hover {
+            background: #cc0000;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.4);
+        }
+        
+        .github-button {
+            background: #333;
+            box-shadow: 0 2px 4px rgba(51, 51, 51, 0.3);
+        }
+        
+        .github-button:hover {
+            background: #555;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(51, 51, 51, 0.4);
+        }
+        
+        .itchio-button {
+            background: #fa5c5c;
+            box-shadow: 0 2px 4px rgba(250, 92, 92, 0.3);
+        }
+        
+        .itchio-button:hover {
+            background: #e53e3e;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(250, 92, 92, 0.4);
+        }
+        
+        .demo-button i,
+        .github-button i,
+        .itchio-button i {
+            font-size: 0.9rem;
         }
     `;
     document.head.appendChild(style);

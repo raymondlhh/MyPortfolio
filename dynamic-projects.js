@@ -65,9 +65,10 @@ class DynamicProjectLoader {
         const title = project.title || project.Name || 'Untitled Project';
         const description = project.description || project.Description || 'No description available';
         const imageUrl = project.imageUrl || project.Image || '';
-        const demoUrl = project.demoUrl || project['Demo Link'] || '';
+        const demoUrl = project.demoUrl || project.Demo || project['Demo Link'] || '';
         const githubUrl = project.githubUrl || project['GitHub Link'] || '';
-        const technologies = project.technologies || project.Technologies || [];
+        const itchioUrl = project.itchioUrl || project.Itchio || project['Itch.io'] || '';
+        const technologies = project.technologies || project.Technologies || project.Tags || [];
 
         // Create image/video section
         let imageSection = '';
@@ -103,6 +104,9 @@ class DynamicProjectLoader {
         }
         if (githubUrl && githubUrl !== '') {
             linksSection += `<a href="${githubUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>`;
+        }
+        if (itchioUrl && itchioUrl !== '') {
+            linksSection += `<a href="${itchioUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> Play</a>`;
         }
 
         card.innerHTML = `
