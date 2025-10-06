@@ -695,6 +695,7 @@ html, body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
+    align-items: stretch;
 }
 
 /* No Projects Message */
@@ -748,6 +749,10 @@ html, body {
     overflow: hidden;
     box-shadow: 0 4px 6px var(--shadow-color);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 400px;
 }
 
 .project-card:hover {
@@ -770,6 +775,10 @@ html, body {
 
 .project-content {
     padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .project-content h3 {
@@ -783,6 +792,10 @@ html, body {
     color: var(--text-secondary);
     margin-bottom: 1rem;
     line-height: 1.6;
+    flex: 1;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
 }
 
 .project-tech {
@@ -790,6 +803,7 @@ html, body {
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1rem;
+    flex-shrink: 0;
 }
 
 .project-tech span {
@@ -804,6 +818,7 @@ html, body {
 .project-links {
     display: flex;
     gap: 1rem;
+    margin-top: auto;
 }
 
 .project-link {
@@ -1089,6 +1104,7 @@ html, body {
 
     .projects-grid {
         grid-template-columns: 1fr;
+        align-items: stretch;
     }
     
     .project-tabs {
@@ -1350,22 +1366,27 @@ html {
     width: 100%;
     position: relative;
     min-height: 400px; /* Ensure consistent height */
+    display: flex;
+    align-items: stretch;
 }
 
 .project-page {
     display: flex;
     gap: 2rem;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch;
     opacity: 1;
     transition: opacity 0.3s ease;
     width: 100%;
+    min-height: 100%;
 }
 
 .project-page .project-card {
     flex: 1;
     max-width: calc(50% - 1rem);
     min-width: 300px;
+    height: auto;
+    min-height: 400px;
 }
 
 /* Navigation Controls */
@@ -1459,6 +1480,8 @@ html {
     .project-page .project-card {
         max-width: 100%;
         min-width: 280px;
+        height: auto;
+        min-height: 400px;
     }
 
     .pagination-navigation {
@@ -1492,6 +1515,8 @@ html {
 
     .project-page .project-card {
         min-width: 260px;
+        height: auto;
+        min-height: 400px;
     }
 
     .pagination-navigation {
