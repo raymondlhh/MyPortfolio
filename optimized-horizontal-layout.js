@@ -515,7 +515,7 @@ function addOptimizedHorizontalStyles() {
         /* Grid layout for multiple cards */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 2rem;
             padding: 1rem;
             justify-items: center;

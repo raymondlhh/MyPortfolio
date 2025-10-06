@@ -471,9 +471,9 @@ function addBiggerPokerCardStyles() {
         /* Grid layout for multiple cards */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 2rem;
-            justify-items: center;
+            justify-content: center;
             padding: 1.5rem;
         }
         
