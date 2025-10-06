@@ -712,7 +712,7 @@ html, body {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     gap: 2rem;
     align-items: stretch;
     max-width: 100%;
@@ -724,21 +724,21 @@ html, body {
 /* Responsive grid for larger screens */
 @media (min-width: 1200px) {
     .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
         gap: 3rem;
     }
 }
 
 @media (min-width: 1400px) {
     .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
         gap: 3rem;
     }
 }
 
 @media (min-width: 1600px) {
     .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
         gap: 4rem;
     }
 }
@@ -799,28 +799,28 @@ html, body {
     height: auto;
     min-height: 400px;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
 }
 
 /* Responsive sizing for project cards on larger screens */
 @media (min-width: 1200px) {
     .project-card {
         min-height: 450px;
-        max-width: 450px;
+        max-width: 600px;
     }
 }
 
 @media (min-width: 1400px) {
     .project-card {
         min-height: 500px;
-        max-width: 500px;
+        max-width: 650px;
     }
 }
 
 @media (min-width: 1600px) {
     .project-card {
         min-height: 550px;
-        max-width: 550px;
+        max-width: 700px;
     }
 }
 
@@ -1456,8 +1456,8 @@ html {
 
 .project-page .project-card {
     flex: 0 1 auto;
-    max-width: 400px;
-    min-width: 300px;
+    max-width: 500px;
+    min-width: 400px;
     height: auto;
     min-height: 400px;
     display: flex;
@@ -1467,24 +1467,24 @@ html {
 /* Responsive sizing for pagination cards on larger screens */
 @media (min-width: 1200px) {
     .project-page .project-card {
-        min-width: 400px;
-        max-width: 450px;
+        min-width: 500px;
+        max-width: 600px;
         min-height: 450px;
     }
 }
 
 @media (min-width: 1400px) {
     .project-page .project-card {
-        min-width: 450px;
-        max-width: 500px;
+        min-width: 550px;
+        max-width: 650px;
         min-height: 500px;
     }
 }
 
 @media (min-width: 1600px) {
     .project-page .project-card {
-        min-width: 500px;
-        max-width: 550px;
+        min-width: 600px;
+        max-width: 700px;
         min-height: 550px;
     }
 }
@@ -1596,8 +1596,8 @@ html {
     }
 
     .project-page .project-card {
-        max-width: 350px;
-        min-width: 280px;
+        max-width: 400px;
+        min-width: 320px;
         height: auto;
         min-height: 400px;
         display: flex;
@@ -1634,8 +1634,8 @@ html {
     }
 
     .project-page .project-card {
-        min-width: 260px;
-        max-width: 320px;
+        min-width: 300px;
+        max-width: 380px;
         height: auto;
         min-height: 400px;
         display: flex;

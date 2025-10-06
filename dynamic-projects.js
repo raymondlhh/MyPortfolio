@@ -137,16 +137,20 @@ class DynamicProjectLoader {
     ensureCardLayout(card) {
         if (!card) return;
         
-        // Get responsive min-height based on window width
+        // Get responsive min-height and max-width based on window width
         const windowWidth = window.innerWidth;
         let minHeight = '400px';
+        let maxWidth = '500px';
         
         if (windowWidth >= 1600) {
             minHeight = '550px';
+            maxWidth = '700px';
         } else if (windowWidth >= 1400) {
             minHeight = '500px';
+            maxWidth = '650px';
         } else if (windowWidth >= 1200) {
             minHeight = '450px';
+            maxWidth = '600px';
         }
         
         // Force flex layout
@@ -154,6 +158,7 @@ class DynamicProjectLoader {
         card.style.flexDirection = 'column';
         card.style.height = 'auto';
         card.style.minHeight = minHeight;
+        card.style.maxWidth = maxWidth;
         card.style.width = '100%';
         
         // Ensure content area is properly laid out
