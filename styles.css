@@ -1706,7 +1706,14 @@ html {
 /* Force proper card sizing for all project cards regardless of container */
 .project-card,
 .pagination-container .project-card,
-.project-page .project-card {
+.project-page .project-card,
+#vr-projects .project-card,
+#ar-projects .project-card,
+#mr-projects .project-card,
+#game-dev-projects .project-card,
+#3d-modeling-projects .project-card,
+#animation-projects .project-card,
+#audio-video-projects .project-card {
     display: flex !important;
     flex-direction: column !important;
     height: auto !important;
@@ -1718,7 +1725,14 @@ html {
 @media (min-width: 1200px) {
     .project-card,
     .pagination-container .project-card,
-    .project-page .project-card {
+    .project-page .project-card,
+    #vr-projects .project-card,
+    #ar-projects .project-card,
+    #mr-projects .project-card,
+    #game-dev-projects .project-card,
+    #3d-modeling-projects .project-card,
+    #animation-projects .project-card,
+    #audio-video-projects .project-card {
         min-height: 450px !important;
     }
 }
@@ -1726,7 +1740,14 @@ html {
 @media (min-width: 1400px) {
     .project-card,
     .pagination-container .project-card,
-    .project-page .project-card {
+    .project-page .project-card,
+    #vr-projects .project-card,
+    #ar-projects .project-card,
+    #mr-projects .project-card,
+    #game-dev-projects .project-card,
+    #3d-modeling-projects .project-card,
+    #animation-projects .project-card,
+    #audio-video-projects .project-card {
         min-height: 500px !important;
     }
 }
@@ -1734,14 +1755,28 @@ html {
 @media (min-width: 1600px) {
     .project-card,
     .pagination-container .project-card,
-    .project-page .project-card {
+    .project-page .project-card,
+    #vr-projects .project-card,
+    #ar-projects .project-card,
+    #mr-projects .project-card,
+    #game-dev-projects .project-card,
+    #3d-modeling-projects .project-card,
+    #animation-projects .project-card,
+    #audio-video-projects .project-card {
         min-height: 550px !important;
     }
 }
 
 .project-card .project-content,
 .pagination-container .project-card .project-content,
-.project-page .project-card .project-content {
+.project-page .project-card .project-content,
+#vr-projects .project-card .project-content,
+#ar-projects .project-card .project-content,
+#mr-projects .project-card .project-content,
+#game-dev-projects .project-card .project-content,
+#3d-modeling-projects .project-card .project-content,
+#animation-projects .project-card .project-content,
+#audio-video-projects .project-card .project-content {
     flex: 1 !important;
     display: flex !important;
     flex-direction: column !important;
@@ -1750,7 +1785,14 @@ html {
 
 .project-card .project-content p,
 .pagination-container .project-card .project-content p,
-.project-page .project-card .project-content p {
+.project-page .project-card .project-content p,
+#vr-projects .project-card .project-content p,
+#ar-projects .project-card .project-content p,
+#mr-projects .project-card .project-content p,
+#game-dev-projects .project-card .project-content p,
+#3d-modeling-projects .project-card .project-content p,
+#animation-projects .project-card .project-content p,
+#audio-video-projects .project-card .project-content p {
     flex: 1 !important;
     overflow: visible !important;
     text-overflow: unset !important;
@@ -1759,6 +1801,13 @@ html {
 
 .project-card .project-links,
 .pagination-container .project-card .project-links,
-.project-page .project-card .project-links {
+.project-page .project-card .project-links,
+#vr-projects .project-card .project-links,
+#ar-projects .project-card .project-links,
+#mr-projects .project-card .project-links,
+#game-dev-projects .project-card .project-links,
+#3d-modeling-projects .project-card .project-links,
+#animation-projects .project-card .project-links,
+#audio-video-projects .project-card .project-links {
     margin-top: auto !important;
 } 

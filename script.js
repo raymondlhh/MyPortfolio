@@ -173,6 +173,15 @@ tabButtons.forEach(button => {
             }, 300);
         }
         
+        // Ensure proper layout for AR and MR sections when they become active
+        if (category === 'ar' || category === 'mr') {
+            setTimeout(() => {
+                if (window.dynamicProjectLoader) {
+                    window.dynamicProjectLoader.ensureSectionLayout(`#${category}-projects`);
+                }
+            }, 500);
+        }
+        
         // Smooth scroll to projects section if not already there
         const projectsSection = document.getElementById('projects');
         const rect = projectsSection.getBoundingClientRect();

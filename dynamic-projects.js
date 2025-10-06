@@ -184,8 +184,33 @@ class DynamicProjectLoader {
     // Helper method to ensure all project cards are properly laid out
     ensureAllCardsLayout() {
         const allCards = document.querySelectorAll('.project-card');
-        allCards.forEach(card => {
+        console.log(`Ensuring layout for ${allCards.length} project cards`);
+        
+        allCards.forEach((card, index) => {
             this.ensureCardLayout(card);
+            
+            // Log which section this card belongs to
+            const section = card.closest('#vr-projects, #ar-projects, #mr-projects, #game-dev-projects, #3d-modeling-projects, #animation-projects, #audio-video-projects');
+            if (section) {
+                console.log(`Card ${index + 1} in section: ${section.id}`);
+            }
+        });
+    }
+
+    // Helper method to ensure layout for a specific section
+    ensureSectionLayout(sectionSelector) {
+        const section = document.querySelector(sectionSelector);
+        if (!section) {
+            console.log(`Section not found: ${sectionSelector}`);
+            return;
+        }
+        
+        const cards = section.querySelectorAll('.project-card');
+        console.log(`Ensuring layout for ${cards.length} cards in ${sectionSelector}`);
+        
+        cards.forEach((card, index) => {
+            this.ensureCardLayout(card);
+            console.log(`Applied layout to card ${index + 1} in ${sectionSelector}`);
         });
     }
 
@@ -381,6 +406,12 @@ class DynamicProjectLoader {
                 await this.displayProjects('#vr-projects .projects-grid', 'Virtual Reality');
                 await this.displayProjects('#ar-projects .projects-grid', 'Augmented Reality');
                 await this.displayProjects('#mr-projects .projects-grid', 'Mixed Reality');
+                
+                // Ensure AR and MR sections get proper layout after loading
+                setTimeout(() => {
+                    this.ensureSectionLayout('#ar-projects');
+                    this.ensureSectionLayout('#mr-projects');
+                }, 1000);
                 
                 // Load all others categories
                 console.log('Loading all others categories...');
