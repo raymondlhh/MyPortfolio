@@ -137,11 +137,24 @@ class DynamicProjectLoader {
     ensureCardLayout(card) {
         if (!card) return;
         
+        // Get responsive min-height based on window width
+        const windowWidth = window.innerWidth;
+        let minHeight = '400px';
+        
+        if (windowWidth >= 1600) {
+            minHeight = '550px';
+        } else if (windowWidth >= 1400) {
+            minHeight = '500px';
+        } else if (windowWidth >= 1200) {
+            minHeight = '450px';
+        }
+        
         // Force flex layout
         card.style.display = 'flex';
         card.style.flexDirection = 'column';
         card.style.height = 'auto';
-        card.style.minHeight = '400px';
+        card.style.minHeight = minHeight;
+        card.style.width = '100%';
         
         // Ensure content area is properly laid out
         const content = card.querySelector('.project-content');
@@ -419,6 +432,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             // Set up others tab switching
             setupOthersTabSwitching();
+            
+            // Set up window resize listener for responsive card sizing
+            setupResponsiveCardSizing();
         } catch (error) {
             console.error('Error loading dynamic projects:', error);
         }
@@ -515,6 +531,21 @@ function getCollectionNameForCategory(category) {
         'audio-video': 'Audio & Video Production'
     };
     return categoryMap[category] || 'Unknown';
+}
+
+// Function to set up responsive card sizing on window resize
+function setupResponsiveCardSizing() {
+    let resizeTimeout;
+    
+    window.addEventListener('resize', () => {
+        // Debounce resize events to avoid excessive calls
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (window.dynamicProjectLoader) {
+                window.dynamicProjectLoader.ensureAllCardsLayout();
+            }
+        }, 250);
+    });
 }
 
 console.log('Dynamic project loader initialized!'); 

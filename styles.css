@@ -71,6 +71,25 @@ html, body {
     padding: 0 20px;
 }
 
+/* Responsive container for larger screens */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1600px;
+    }
+}
+
+@media (min-width: 1800px) {
+    .container {
+        max-width: 1800px;
+    }
+}
+
 /* Navigation */
 .navbar {
     position: fixed;
@@ -696,6 +715,30 @@ html, body {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
     align-items: stretch;
+    max-width: 100%;
+    width: 100%;
+}
+
+/* Responsive grid for larger screens */
+@media (min-width: 1200px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 3rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 3rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 4rem;
+    }
 }
 
 /* No Projects Message */
@@ -753,6 +796,26 @@ html, body {
     flex-direction: column;
     height: auto;
     min-height: 400px;
+    width: 100%;
+}
+
+/* Responsive sizing for project cards on larger screens */
+@media (min-width: 1200px) {
+    .project-card {
+        min-height: 450px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .project-card {
+        min-height: 500px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .project-card {
+        min-height: 550px;
+    }
 }
 
 .project-card:hover {
@@ -1391,6 +1454,28 @@ html {
     flex-direction: column;
 }
 
+/* Responsive sizing for pagination cards on larger screens */
+@media (min-width: 1200px) {
+    .project-page .project-card {
+        min-width: 400px;
+        min-height: 450px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .project-page .project-card {
+        min-width: 450px;
+        min-height: 500px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .project-page .project-card {
+        min-width: 500px;
+        min-height: 550px;
+    }
+}
+
 .project-page .project-card .project-content {
     flex: 1;
     display: flex;
@@ -1626,6 +1711,32 @@ html {
     flex-direction: column !important;
     height: auto !important;
     min-height: 400px !important;
+    width: 100% !important;
+}
+
+/* Responsive sizing for forced layout on larger screens */
+@media (min-width: 1200px) {
+    .project-card,
+    .pagination-container .project-card,
+    .project-page .project-card {
+        min-height: 450px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    .project-card,
+    .pagination-container .project-card,
+    .project-page .project-card {
+        min-height: 500px !important;
+    }
+}
+
+@media (min-width: 1600px) {
+    .project-card,
+    .pagination-container .project-card,
+    .project-page .project-card {
+        min-height: 550px !important;
+    }
 }
 
 .project-card .project-content,
