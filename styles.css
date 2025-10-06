@@ -717,6 +717,8 @@ html, body {
     align-items: stretch;
     max-width: 100%;
     width: 100%;
+    justify-content: center;
+    justify-items: center;
 }
 
 /* Responsive grid for larger screens */
@@ -797,24 +799,28 @@ html, body {
     height: auto;
     min-height: 400px;
     width: 100%;
+    max-width: 400px;
 }
 
 /* Responsive sizing for project cards on larger screens */
 @media (min-width: 1200px) {
     .project-card {
         min-height: 450px;
+        max-width: 450px;
     }
 }
 
 @media (min-width: 1400px) {
     .project-card {
         min-height: 500px;
+        max-width: 500px;
     }
 }
 
 @media (min-width: 1600px) {
     .project-card {
         min-height: 550px;
+        max-width: 550px;
     }
 }
 
@@ -1168,6 +1174,8 @@ html, body {
     .projects-grid {
         grid-template-columns: 1fr;
         align-items: stretch;
+        justify-content: center;
+        justify-items: center;
     }
     
     .project-tabs {
@@ -1431,6 +1439,7 @@ html {
     min-height: 400px; /* Ensure consistent height */
     display: flex;
     align-items: stretch;
+    justify-content: center;
 }
 
 .project-page {
@@ -1442,11 +1451,12 @@ html {
     transition: opacity 0.3s ease;
     width: 100%;
     min-height: 100%;
+    margin: 0 auto;
 }
 
 .project-page .project-card {
-    flex: 1;
-    max-width: calc(50% - 1rem);
+    flex: 0 1 auto;
+    max-width: 400px;
     min-width: 300px;
     height: auto;
     min-height: 400px;
@@ -1458,6 +1468,7 @@ html {
 @media (min-width: 1200px) {
     .project-page .project-card {
         min-width: 400px;
+        max-width: 450px;
         min-height: 450px;
     }
 }
@@ -1465,6 +1476,7 @@ html {
 @media (min-width: 1400px) {
     .project-page .project-card {
         min-width: 450px;
+        max-width: 500px;
         min-height: 500px;
     }
 }
@@ -1472,6 +1484,7 @@ html {
 @media (min-width: 1600px) {
     .project-page .project-card {
         min-width: 500px;
+        max-width: 550px;
         min-height: 550px;
     }
 }
@@ -1583,7 +1596,7 @@ html {
     }
 
     .project-page .project-card {
-        max-width: 100%;
+        max-width: 350px;
         min-width: 280px;
         height: auto;
         min-height: 400px;
@@ -1622,6 +1635,7 @@ html {
 
     .project-page .project-card {
         min-width: 260px;
+        max-width: 320px;
         height: auto;
         min-height: 400px;
         display: flex;
