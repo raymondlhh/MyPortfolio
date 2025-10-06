@@ -125,7 +125,55 @@ class DynamicProjectLoader {
             </div>
         `;
 
+        // Force proper layout after card creation
+        setTimeout(() => {
+            this.ensureCardLayout(card);
+        }, 100);
+
         return card;
+    }
+
+    // Helper method to ensure proper card layout
+    ensureCardLayout(card) {
+        if (!card) return;
+        
+        // Force flex layout
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+        card.style.height = 'auto';
+        card.style.minHeight = '400px';
+        
+        // Ensure content area is properly laid out
+        const content = card.querySelector('.project-content');
+        if (content) {
+            content.style.flex = '1';
+            content.style.display = 'flex';
+            content.style.flexDirection = 'column';
+            content.style.justifyContent = 'space-between';
+        }
+        
+        // Ensure description can expand
+        const description = card.querySelector('.project-content p');
+        if (description) {
+            description.style.flex = '1';
+            description.style.overflow = 'visible';
+            description.style.textOverflow = 'unset';
+            description.style.whiteSpace = 'normal';
+        }
+        
+        // Ensure links stay at bottom
+        const links = card.querySelector('.project-links');
+        if (links) {
+            links.style.marginTop = 'auto';
+        }
+    }
+
+    // Helper method to ensure all project cards are properly laid out
+    ensureAllCardsLayout() {
+        const allCards = document.querySelectorAll('.project-card');
+        allCards.forEach(card => {
+            this.ensureCardLayout(card);
+        });
     }
 
     // Helper method to check if URL is a YouTube video
@@ -260,6 +308,8 @@ class DynamicProjectLoader {
                     // Use a longer delay to ensure the tab switch handler has finished
                     setTimeout(() => {
                         window.projectPagination.forceRefreshPagination(categoryId);
+                        // Ensure all cards are properly laid out after pagination
+                        this.ensureAllCardsLayout();
                     }, 500);
                 }
             }
@@ -361,6 +411,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log('Firebase ready, loading projects...');
             await window.dynamicProjectLoader.loadPageProjects();
             console.log('Dynamic projects loaded successfully');
+            
+            // Ensure all cards are properly laid out after loading
+            setTimeout(() => {
+                window.dynamicProjectLoader.ensureAllCardsLayout();
+            }, 1000);
             
             // Set up others tab switching
             setupOthersTabSwitching();

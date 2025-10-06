@@ -1387,6 +1387,26 @@ html {
     min-width: 300px;
     height: auto;
     min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-page .project-card .project-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-page .project-card .project-content p {
+    flex: 1;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+}
+
+.project-page .project-card .project-links {
+    margin-top: auto;
 }
 
 /* Navigation Controls */
@@ -1482,6 +1502,8 @@ html {
         min-width: 280px;
         height: auto;
         min-height: 400px;
+        display: flex;
+        flex-direction: column;
     }
 
     .pagination-navigation {
@@ -1517,6 +1539,8 @@ html {
         min-width: 260px;
         height: auto;
         min-height: 400px;
+        display: flex;
+        flex-direction: column;
     }
 
     .pagination-navigation {
@@ -1592,4 +1616,38 @@ html {
 [data-theme="dark"] .nav-btn.disabled {
     background: var(--text-muted);
     border-color: var(--text-muted);
+}
+
+/* Force proper card sizing for all project cards regardless of container */
+.project-card,
+.pagination-container .project-card,
+.project-page .project-card {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 400px !important;
+}
+
+.project-card .project-content,
+.pagination-container .project-card .project-content,
+.project-page .project-card .project-content {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+.project-card .project-content p,
+.pagination-container .project-card .project-content p,
+.project-page .project-card .project-content p {
+    flex: 1 !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: normal !important;
+}
+
+.project-card .project-links,
+.pagination-container .project-card .project-links,
+.project-page .project-card .project-links {
+    margin-top: auto !important;
 } 
