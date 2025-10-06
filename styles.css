@@ -712,7 +712,7 @@ html, body {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 2rem;
     align-items: stretch;
     max-width: 100%;
@@ -724,21 +724,21 @@ html, body {
 /* Responsive grid for larger screens */
 @media (min-width: 1200px) {
     .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
         gap: 3rem;
     }
 }
 
 @media (min-width: 1400px) {
     .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
         gap: 3rem;
     }
 }
 
 @media (min-width: 1600px) {
     .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
         gap: 4rem;
     }
 }
