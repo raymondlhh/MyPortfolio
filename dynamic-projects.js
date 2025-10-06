@@ -140,17 +140,17 @@ class DynamicProjectLoader {
         // Get responsive min-height and max-width based on window width
         const windowWidth = window.innerWidth;
         let minHeight = '400px';
-        let maxWidth = '500px';
+        let maxWidth = '800px';
         
         if (windowWidth >= 1600) {
             minHeight = '550px';
-            maxWidth = '700px';
+            maxWidth = '1100px';
         } else if (windowWidth >= 1400) {
             minHeight = '500px';
-            maxWidth = '650px';
+            maxWidth = '1000px';
         } else if (windowWidth >= 1200) {
             minHeight = '450px';
-            maxWidth = '600px';
+            maxWidth = '900px';
         }
         
         // Force flex layout
