@@ -103,7 +103,7 @@ class DynamicProjectLoader {
             linksSection += `<a href="${demoUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Demo</a>`;
         }
         if (githubUrl && githubUrl !== '') {
-            linksSection += `<a href="${githubUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>`;
+            linksSection += `<a href="${githubUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>`;
         }
         if (itchioUrl && itchioUrl !== '') {
             linksSection += `<a href="${itchioUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> Play</a>`;
