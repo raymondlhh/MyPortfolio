@@ -160,7 +160,7 @@ function createOptimizedHorizontalCards() {
         const description = project.description || project.Description || 'No description available';
         const imageUrl = project.imageUrl || project.Image || '';
         const demoUrl = project.demoUrl || project.Demo || project['Demo Link'] || '';
-        const githubUrl = project.githubUrl || project['GitHub Link'] || '';
+        const githubUrl = project.githubUrl || project.GitHub || project['GitHub Link'] || '';
         const itchioUrl = project.itchioUrl || project.Itchio || project['Itch.io'] || '';
         const technologies = project.technologies || project.Technologies || project.Tags || [];
 
