@@ -198,8 +198,8 @@ function createOptimizedHorizontalCards() {
                 ${coverSection}
                 <div class="project-links">
                     ${demoLinkSection}
-                    ${githubLinkSection}
                     ${itchioLinkSection}
+                    ${githubLinkSection}
                 </div>
             </div>
             <div class="project-content">
