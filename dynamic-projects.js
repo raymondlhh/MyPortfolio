@@ -67,6 +67,8 @@ class DynamicProjectLoader {
         const imageUrl = project.imageUrl || project.Image || '';
         const demoUrl = project.demoUrl || project.Demo || project['Demo Link'] || '';
         const githubUrl = project.githubUrl || project.GitHub || project['GitHub Link'] || '';
+        const figmaUrl = project.figmaUrl || project.Figma || project['Figma Link'] || '';
+        const reportUrl = project.reportUrl || project.Report || project['Report Link'] || '';
         const itchioUrl = project.itchioUrl || project.Itchio || project['Itch.io'] || '';
         const technologies = project.technologies || project.Technologies || project.Tags || [];
 
@@ -109,6 +111,12 @@ class DynamicProjectLoader {
 
         if (githubUrl && githubUrl !== '') {
             linksSection += `<a href="${githubUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>`;
+        }
+        if (reportUrl && reportUrl !== '') {
+            linksSection += `<a href="${reportUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Report</a>`;
+        }
+        if (figmaUrl && figmaUrl !== '') {
+            linksSection += `<a href="${figmaUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-figma"></i> Figma</a>`;
         }
 
         card.innerHTML = `
@@ -426,11 +434,11 @@ class DynamicProjectLoader {
                 console.log('Loading all others categories...');
                 await this.displayProjects('#software-dev-projects .projects-grid', 'Software Development');
                 await this.displayProjects('#computer-graphics-projects .projects-grid', 'Computer Graphics');
-                await this.displayProjects('#ai-ml-projects .projects-grid', 'AI/ML');
+                await this.displayProjects('#ai-ml-projects .projects-grid', 'AI-ML');
                 await this.displayProjects('#3d-modeling-projects .projects-grid', '3D Modeling');
                 await this.displayProjects('#animation-projects .projects-grid', '2D & 3D Animation');
                 await this.displayProjects('#audio-video-projects .projects-grid', 'Audio & Video Production');
-                await this.displayProjects('#hci-ux-projects .projects-grid', 'HCI/UX');
+                await this.displayProjects('#hci-ux-projects .projects-grid', 'HCI-UX');
                 await this.displayProjects('#board-game-projects .projects-grid', 'Board Game');
                 break;
             default:
@@ -575,8 +583,8 @@ function getCollectionNameForCategory(category) {
         'audio-video': 'Audio & Video Production',
         'software-dev': 'Software Development',
         'board-game': 'Board Game',
-        'hci-ux': 'HCI/UX',
-        'ai-ml': 'AI/ML',
+        'hci-ux': 'HCI-UX',
+        'ai-ml': 'AI-ML',
         'computer-graphics': 'Computer Graphics'
     };
     return categoryMap[category] || 'Unknown';

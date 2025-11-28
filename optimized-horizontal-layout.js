@@ -107,6 +107,30 @@ function createGitHubLinkSection(githubUrl) {
     `;
 }
 
+function createFigmaLinkSection(figmaUrl) {
+    if (!figmaUrl) return '';
+    
+    return `
+        <div class="project-figma-link">
+            <a href="${figmaUrl}" target="_blank" rel="noopener noreferrer" class="figma-button" title="View Design">
+                <i class="fab fa-figma"></i>
+            </a>
+        </div>
+    `;
+}
+
+function createReportLinkSection(reportUrl) {
+    if (!reportUrl) return '';
+    
+    return `
+        <div class="project-report-link">
+            <a href="${reportUrl}" target="_blank" rel="noopener noreferrer" class="report-button" title="View Report">
+                <i class="fas fa-file-pdf"></i>
+            </a>
+        </div>
+    `;
+}
+
 // New: Click-to-play YouTube cover
 function createYouTubeCoverWithPlay(videoUrl, title) {
     const videoId = extractYouTubeVideoId(videoUrl);
@@ -161,6 +185,8 @@ function createOptimizedHorizontalCards() {
         const imageUrl = project.imageUrl || project.Image || '';
         const demoUrl = project.demoUrl || project.Demo || project['Demo Link'] || '';
         const githubUrl = project.githubUrl || project.GitHub || project['GitHub Link'] || '';
+        const figmaUrl = project.figmaUrl || project.Figma || project['Figma Link'] || '';
+        const reportUrl = project.reportUrl || project.Report || project['Report Link'] || '';
         const itchioUrl = project.itchioUrl || project.Itchio || project['Itch.io'] || '';
         const technologies = project.technologies || project.Technologies || project.Tags || [];
 
@@ -190,6 +216,8 @@ function createOptimizedHorizontalCards() {
         // Create link sections
         const demoLinkSection = createDemoLinkSection(demoUrl);
         const githubLinkSection = createGitHubLinkSection(githubUrl);
+        const reportLinkSection = createReportLinkSection(reportUrl);
+        const figmaLinkSection = createFigmaLinkSection(figmaUrl);
         const itchioLinkSection = createItchioLinkSection(itchioUrl);
 
         // Horizontal card layout with all links
@@ -200,6 +228,8 @@ function createOptimizedHorizontalCards() {
                     ${demoLinkSection}
                     ${itchioLinkSection}
                     ${githubLinkSection}
+                    ${reportLinkSection}
+                    ${figmaLinkSection}
                 </div>
             </div>
             <div class="project-content">
@@ -371,12 +401,16 @@ function addOptimizedHorizontalStyles() {
         
         .project-demo-link,
         .project-github-link,
+        .project-report-link,
+        .project-figma-link,
         .project-itchio-link {
             display: flex;
         }
         
         .demo-button,
         .github-button,
+        .report-button,
+        .figma-button,
         .itchio-button {
             display: flex;
             align-items: center;
@@ -402,6 +436,16 @@ function addOptimizedHorizontalStyles() {
             box-shadow: 0 2px 4px rgba(51, 51, 51, 0.3);
         }
         
+        .report-button {
+            background: #dc2626;
+            box-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);
+        }
+        
+        .figma-button {
+            background: #F24E1E;
+            box-shadow: 0 2px 4px rgba(242, 78, 30, 0.3);
+        }
+        
         .itchio-button {
             background: #fa5c5c;
             box-shadow: 0 2px 4px rgba(250, 92, 92, 0.3);
@@ -419,6 +463,18 @@ function addOptimizedHorizontalStyles() {
             box-shadow: 0 4px 8px rgba(51, 51, 51, 0.4);
         }
         
+        .report-button:hover {
+            background: #b91c1c;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(220, 38, 38, 0.4);
+        }
+        
+        .figma-button:hover {
+            background: #E03E1E;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(242, 78, 30, 0.4);
+        }
+        
         .itchio-button:hover {
             background: #e53e3e;
             transform: scale(1.1);
@@ -427,6 +483,8 @@ function addOptimizedHorizontalStyles() {
         
         .demo-button i,
         .github-button i,
+        .report-button i,
+        .figma-button i,
         .itchio-button i {
             font-size: 1rem;
         }
