@@ -173,8 +173,8 @@ tabButtons.forEach(button => {
             }, 300);
         }
         
-        // Ensure proper layout for AR and MR sections when they become active
-        if (category === 'ar' || category === 'mr') {
+        // Ensure proper layout for AR, MR, and Game Development sections when they become active
+        if (category === 'ar' || category === 'mr' || category === 'game-dev') {
             setTimeout(() => {
                 if (window.dynamicProjectLoader) {
                     window.dynamicProjectLoader.ensureSectionLayout(`#${category}-projects`);

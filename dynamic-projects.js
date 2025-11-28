@@ -413,19 +413,25 @@ class DynamicProjectLoader {
                 await this.displayProjects('#vr-projects .projects-grid', 'Virtual Reality');
                 await this.displayProjects('#ar-projects .projects-grid', 'Augmented Reality');
                 await this.displayProjects('#mr-projects .projects-grid', 'Mixed Reality');
+                await this.displayProjects('#game-dev-projects .projects-grid', 'Game Development');
                 
-                // Ensure AR and MR sections get proper layout after loading
+                // Ensure AR, MR, and Game Development sections get proper layout after loading
                 setTimeout(() => {
                     this.ensureSectionLayout('#ar-projects');
                     this.ensureSectionLayout('#mr-projects');
+                    this.ensureSectionLayout('#game-dev-projects');
                 }, 1000);
                 
                 // Load all others categories
                 console.log('Loading all others categories...');
-                await this.displayProjects('#game-dev-projects .projects-grid', 'Game Development');
+                await this.displayProjects('#software-dev-projects .projects-grid', 'Software Development');
+                await this.displayProjects('#computer-graphics-projects .projects-grid', 'Computer Graphics');
+                await this.displayProjects('#ai-ml-projects .projects-grid', 'AI/ML');
                 await this.displayProjects('#3d-modeling-projects .projects-grid', '3D Modeling');
                 await this.displayProjects('#animation-projects .projects-grid', '2D & 3D Animation');
                 await this.displayProjects('#audio-video-projects .projects-grid', 'Audio & Video Production');
+                await this.displayProjects('#hci-ux-projects .projects-grid', 'HCI/UX');
+                await this.displayProjects('#board-game-projects .projects-grid', 'Board Game');
                 break;
             default:
                 console.log('Unknown page, no projects to load');
@@ -566,7 +572,12 @@ function getCollectionNameForCategory(category) {
         'game-dev': 'Game Development',
         '3d-modeling': '3D Modeling',
         'animation': '2D & 3D Animation',
-        'audio-video': 'Audio & Video Production'
+        'audio-video': 'Audio & Video Production',
+        'software-dev': 'Software Development',
+        'board-game': 'Board Game',
+        'hci-ux': 'HCI/UX',
+        'ai-ml': 'AI/ML',
+        'computer-graphics': 'Computer Graphics'
     };
     return categoryMap[category] || 'Unknown';
 }

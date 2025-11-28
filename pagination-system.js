@@ -20,7 +20,9 @@ class ProjectPagination {
     setupPaginationContainers() {
         const categories = [
             'vr-projects', 'ar-projects', 'mr-projects',
-            'game-dev-projects', '3d-modeling-projects', 'animation-projects', 'audio-video-projects'
+            'game-dev-projects', '3d-modeling-projects', 'animation-projects', 'audio-video-projects',
+            'software-dev-projects', 'board-game-projects', 'hci-ux-projects',
+            'ai-ml-projects', 'computer-graphics-projects'
         ];
 
         categories.forEach(categoryId => {

@@ -184,7 +184,7 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">XR Projects</h2>
+            <h2 class="section-title">XR & Game Development</h2>
             
             <!-- Project Tabs -->
             <div class="project-tabs">
@@ -199,6 +199,10 @@
                 <button class="tab-button" data-category="mr">
                     <i class="fas fa-glasses"></i>
                     <span>Mixed Reality</span>
+                </button>
+                <button class="tab-button" data-category="game-dev">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Game Development</span>
                 </button>
             </div>
 
@@ -240,6 +244,19 @@
                     <!-- MR projects will be loaded dynamically from Firestore -->
                 </div>
             </div>
+
+            <!-- Game Development Projects -->
+            <div class="project-category" id="game-dev-projects">
+                <div class="category-header">
+                    <h3 class="category-title">
+                        <i class="fas fa-gamepad"></i>
+                        Game Development
+                    </h3>
+                </div>
+                <div class="projects-grid">
+                    <!-- Game Development projects will be loaded dynamically from Firestore -->
+                </div>
+            </div>
         </div>
     </section>
 
@@ -250,9 +267,17 @@
             
             <!-- Others Tabs -->
             <div class="others-tabs">
-                <button type="button" class="others-tab-button active" data-category="game-dev">
-                    <i class="fas fa-gamepad"></i>
-                    <span>Game Development</span>
+                <button type="button" class="others-tab-button active" data-category="software-dev">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Software Development</span>
+                </button>
+                <button type="button" class="others-tab-button" data-category="computer-graphics">
+                    <i class="fas fa-image"></i>
+                    <span>Computer Graphics</span>
+                </button>
+                <button type="button" class="others-tab-button" data-category="ai-ml">
+                    <i class="fas fa-brain"></i>
+                    <span>AI/ML</span>
                 </button>
                 <button type="button" class="others-tab-button" data-category="3d-modeling">
                     <i class="fas fa-cube"></i>
@@ -266,18 +291,52 @@
                     <i class="fas fa-video"></i>
                     <span>Audio & Video Production</span>
                 </button>
+                <button type="button" class="others-tab-button" data-category="hci-ux">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <span>HCI/UX</span>
+                </button>
+                <button type="button" class="others-tab-button" data-category="board-game">
+                    <i class="fas fa-chess"></i>
+                    <span>Board Game</span>
+                </button>
             </div>
 
-            <!-- Game Development -->
-            <div class="others-category active" id="game-dev-projects">
+            <!-- Software Development -->
+            <div class="others-category active" id="software-dev-projects">
                 <div class="category-header">
                     <h3 class="category-title">
-                        <i class="fas fa-gamepad"></i>
-                        Game Development
+                        <i class="fas fa-laptop-code"></i>
+                        Software Development
                     </h3>
                 </div>
                 <div class="projects-grid">
-                    <!-- Game Development others will be loaded dynamically from Firestore -->
+                    <!-- Software Development projects will be loaded dynamically from Firestore -->
+                </div>
+            </div>
+
+            <!-- Computer Graphics -->
+            <div class="others-category" id="computer-graphics-projects">
+                <div class="category-header">
+                    <h3 class="category-title">
+                        <i class="fas fa-image"></i>
+                        Computer Graphics
+                    </h3>
+                </div>
+                <div class="projects-grid">
+                    <!-- Computer Graphics projects will be loaded dynamically from Firestore -->
+                </div>
+            </div>
+
+            <!-- AI/ML -->
+            <div class="others-category" id="ai-ml-projects">
+                <div class="category-header">
+                    <h3 class="category-title">
+                        <i class="fas fa-brain"></i>
+                        AI/ML
+                    </h3>
+                </div>
+                <div class="projects-grid">
+                    <!-- AI/ML projects will be loaded dynamically from Firestore -->
                 </div>
             </div>
 
@@ -317,6 +376,32 @@
                 </div>
                 <div class="projects-grid">
                     <!-- Audio & Video Production others will be loaded dynamically from Firestore -->
+                </div>
+            </div>
+
+            <!-- HCI/UX -->
+            <div class="others-category" id="hci-ux-projects">
+                <div class="category-header">
+                    <h3 class="category-title">
+                        <i class="fas fa-mouse-pointer"></i>
+                        HCI/UX
+                    </h3>
+                </div>
+                <div class="projects-grid">
+                    <!-- HCI/UX projects will be loaded dynamically from Firestore -->
+                </div>
+            </div>
+
+            <!-- Board Game -->
+            <div class="others-category" id="board-game-projects">
+                <div class="category-header">
+                    <h3 class="category-title">
+                        <i class="fas fa-chess"></i>
+                        Board Game
+                    </h3>
+                </div>
+                <div class="projects-grid">
+                    <!-- Board Game projects will be loaded dynamically from Firestore -->
                 </div>
             </div>
         </div>
