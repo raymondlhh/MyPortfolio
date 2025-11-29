@@ -215,10 +215,10 @@ function createOptimizedHorizontalCards() {
         
         // Create link sections
         const demoLinkSection = createDemoLinkSection(demoUrl);
-        const githubLinkSection = createGitHubLinkSection(githubUrl);
         const reportLinkSection = createReportLinkSection(reportUrl);
-        const figmaLinkSection = createFigmaLinkSection(figmaUrl);
         const itchioLinkSection = createItchioLinkSection(itchioUrl);
+        const figmaLinkSection = createFigmaLinkSection(figmaUrl);
+        const githubLinkSection = createGitHubLinkSection(githubUrl);
 
         // Horizontal card layout with all links
         card.innerHTML = `
@@ -226,10 +226,10 @@ function createOptimizedHorizontalCards() {
                 ${coverSection}
                 <div class="project-links">
                     ${demoLinkSection}
-                    ${itchioLinkSection}
-                    ${githubLinkSection}
                     ${reportLinkSection}
+                    ${itchioLinkSection}
                     ${figmaLinkSection}
+                    ${githubLinkSection}
                 </div>
             </div>
             <div class="project-content">

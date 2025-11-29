@@ -104,19 +104,17 @@ class DynamicProjectLoader {
         if (demoUrl && demoUrl !== '') {
             linksSection += `<a href="${demoUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Demo</a>`;
         }
-        
-        if (itchioUrl && itchioUrl !== '') {
-            linksSection += `<a href="${itchioUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> Play</a>`;
-        }
-
-        if (githubUrl && githubUrl !== '') {
-            linksSection += `<a href="${githubUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>`;
-        }
         if (reportUrl && reportUrl !== '') {
             linksSection += `<a href="${reportUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Report</a>`;
         }
+        if (itchioUrl && itchioUrl !== '') {
+            linksSection += `<a href="${itchioUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> Play</a>`;
+        }
         if (figmaUrl && figmaUrl !== '') {
             linksSection += `<a href="${figmaUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-figma"></i> Figma</a>`;
+        }
+        if (githubUrl && githubUrl !== '') {
+            linksSection += `<a href="${githubUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>`;
         }
 
         card.innerHTML = `
