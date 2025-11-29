@@ -434,7 +434,7 @@ class DynamicProjectLoader {
                 console.log('Loading all others categories...');
                 await this.displayProjects('#software-dev-projects .projects-grid', 'Software Development');
                 await this.displayProjects('#computer-graphics-projects .projects-grid', 'Computer Graphics');
-                await this.displayProjects('#ai-ml-projects .projects-grid', 'AI-ML');
+                // await this.displayProjects('#ai-ml-projects .projects-grid', 'AI-ML');
                 await this.displayProjects('#3d-modeling-projects .projects-grid', '3D Modeling');
                 await this.displayProjects('#animation-projects .projects-grid', '2D & 3D Animation');
                 await this.displayProjects('#audio-video-projects .projects-grid', 'Audio & Video Production');
@@ -584,7 +584,7 @@ function getCollectionNameForCategory(category) {
         'software-dev': 'Software Development',
         'board-game': 'Board Game',
         'hci-ux': 'HCI-UX',
-        'ai-ml': 'AI-ML',
+        // 'ai-ml': 'AI-ML',
         'computer-graphics': 'Computer Graphics'
     };
     return categoryMap[category] || 'Unknown';
