@@ -1,43 +1,54 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
-    
-    // In the original, links were anchor tags (#home). In React Router, if we are on the homepage we might want to scroll,
-    // but if we are on other pages, we should link to /.
-    // For now, let's keep them as a mix or just standard links since it's a SPA.
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+    };
+
+    const handleNavClick = (sectionId) => {
+        setIsOpen(false);
+        if (location.pathname !== '/') {
+            navigate('/');
+            setTimeout(() => {
+                const element = document.getElementById(sectionId);
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        } else {
+            const element = document.getElementById(sectionId);
+            if (element) element.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     return (
         <nav className="navbar">
             <div className="nav-container">
                 <div className="nav-logo">
-                    <Link to="/">Raymond Ling</Link>
+                    <Link to="/" onClick={() => handleNavClick('home')}>Raymond Ling</Link>
                     <div className="nav-desc">Digital Media Technology</div>
                 </div>
                 <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
                     <li className="nav-item">
-                        <Link to="/" className="nav-link" onClick={() => setIsOpen(false)}>Home</Link>
+                        <a href="#home" className="nav-link" onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}>Home</a>
                     </li>
                     <li className="nav-item">
-                        <Link to="/#about" className="nav-link" onClick={() => setIsOpen(false)}>About</Link>
+                        <a href="#about" className="nav-link" onClick={(e) => { e.preventDefault(); handleNavClick('about'); }}>About</a>
                     </li>
                     <li className="nav-item">
-                        <Link to="/#skills" className="nav-link" onClick={() => setIsOpen(false)}>Skills</Link>
+                        <a href="#skills" className="nav-link" onClick={(e) => { e.preventDefault(); handleNavClick('skills'); }}>Skills</a>
                     </li>
                     <li className="nav-item">
-                        <Link to="/#projects" className="nav-link" onClick={() => setIsOpen(false)}>Projects</Link>
+                        <a href="#projects" className="nav-link" onClick={(e) => { e.preventDefault(); handleNavClick('projects'); }}>Projects</a>
                     </li>
                     <li className="nav-item">
-                        <Link to="/#others" className="nav-link" onClick={() => setIsOpen(false)}>Others</Link>
+                        <a href="#others" className="nav-link" onClick={(e) => { e.preventDefault(); handleNavClick('others'); }}>Others</a>
                     </li>
                     <li className="nav-item">
-                        <Link to="/#contact" className="nav-link" onClick={() => setIsOpen(false)}>Contact</Link>
+                        <a href="#contact" className="nav-link" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}>Contact</a>
                     </li>
                 </ul>
                 <div className={`hamburger ${isOpen ? 'active' : ''}`} onClick={toggleMenu}>
@@ -51,3 +62,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

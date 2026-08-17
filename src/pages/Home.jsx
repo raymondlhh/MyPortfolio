@@ -33,7 +33,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="hero-image">
-                        <img src="/assets/images/profiles/Profile.jpg" alt="Raymond Ling Heng Hua" className="profile-image" />
+                        <img src="./assets/images/profiles/Profile.jpg" alt="Raymond Ling Heng Hua" className="profile-image" />
                     </div>
                 </div>
             </section>
